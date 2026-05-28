@@ -3,21 +3,56 @@ title: "Prerequisites"
 pagetitle: "Prerequisites"
 ---
 
-## Introduction
+## Introduction {#sec-intro}
 
-Welcome to the Mobile Tartu 2026 Transport Data Science workshop! 
+Welcome to the Mobile Tartu 2026 Transport Data Science workshop!
+This document outlines the prerequisites for the workshop.
+There are two main ways to run the workshop materials:
+
+1. **Cloud-based setup** using GitHub Codespaces, Posit Cloud, or similar services (see @sec-cloud).
+2. **Local setup** on your computer (see @sec-local).
+
+Within each approach, there are various options for software and data setup.
 
 
-## Software
+## Cloud Setup {#sec-cloud}
 
-- R (>= 4.3)
-- RStudio or VS Code
-- Quarto CLI
-- Git
+For the cloud-based option, you can run the workshop environment entirely in your web browser. This is the fastest and easiest way to get started.
 
-## R packages
+### GitHub Account {#sec-github}
 
-Install the necessary packages for the workshop using the `pak` package:
+To use GitHub Codespaces or access repository resources, please create a GitHub account if you do not already have one.
+
+Once you have a GitHub account, you can launch the workspace in GitHub Codespaces by clicking the badge below:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tdscience/tartu26?quickstart=1)
+
+Alternatively, you can run the workshop materials using Posit Cloud or similar web services. Note that for these cloud services, you may still need to install the required packages (see @sec-packages).
+
+
+## Local Setup {#sec-local}
+
+If you prefer to run the workshop materials on your own computer, you will need to install the software listed in @sec-software and the R packages described in @sec-packages.
+
+The workshop materials support both **R** and **Python** development paths. You are free to follow either path depending on your preference.
+
+### Software Requirements {#sec-software}
+
+Please ensure you have the following software installed on your machine:
+
+- **Language Runtimes**:
+  - **R (>= 4.3)**: Required for the R path.
+  - **Python (>= 3.10)**: Required for the Python path.
+- **Popular IDE Options**:
+  - **VS Code**: A versatile, modern, and powerful code editor.
+  - **Posit** (such as Positron): A next-generation IDE built by Posit, tailored for multi-language data science.
+  - **RStudio**: The classic, widely-used IDE for R development.
+- **Quarto CLI**: Used to compile and render the workshop documents and workbook.
+- **Git**: Version control software to manage code and download files.
+
+### R Packages {#sec-packages}
+
+Install the necessary packages for the workshop using the `pak` package (recommended):
 
 ```r
 install.packages("pak")
@@ -43,10 +78,6 @@ install.packages(c(
 ))
 ```
 
-## Data
+### Data {#sec-data}
 
-We will use open datasets throughout the workshop. All data will be downloadable during the sessions.
-
-## GitHub Account
-
-Please create a GitHub account if you do not already have one.
+We will use open datasets throughout the workshop. All required data will be downloadable during the sessions, as described in @sec-intro.
