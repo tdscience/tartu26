@@ -24,10 +24,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Verify R packages
         run: |
-          Rscript -e 'if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak", repos = "https://cran.r-project.org")'
-          Rscript -e 'pak::local_install_dev_deps()'
+          Rscript -e 'pkgs <- c("sf", "tmap", "stplanr", "dodgr", "osmdata", "stats19", "spanishoddata", "flowmapblue", "tidyverse", "lubridate"); missing <- pkgs[!sapply(pkgs, requireNamespace, quietly = TRUE)]; if (length(missing) > 0) stop("Missing: ", paste(missing, collapse = ", ")) else cat("All packages available\n")'
 
       - name: Render Quarto
         run: quarto render
