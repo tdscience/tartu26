@@ -1,9 +1,10 @@
 project:
   type: website
   output-dir: docs
+  pre-render: _pre-render.R
 
 website:
-  title: "Data Science for Transport Planning"
+  title: "Tartu 2026 Transport Data Science"
   repo-url: "https://github.com/tdscience/tartu26"
   repo-actions: [issue]
   page-footer:
@@ -44,5 +45,3 @@ execute:
   cache: true
   message: false
   warning: false
-
-bibliography: references.bib
