@@ -3,43 +3,145 @@ title: "Session 1: Finding and importing data"
 pagetitle: "Session 1"
 ---
 
-# Finding, importing and cleaning transport datasets
+# Finding and Importing Transport Data
 
-This session covers how to find, import, and clean common transport datasets.
+Welcome to this tutorial on finding, importing, and preparing geographic and spatial datasets for transport planning and analysis. This session focuses on three of the most widely used sources of open transport data, utilizing specialized R packages:
 
-## Learning objectives
+1. **OpenStreetMap (OSM) data** with the `osmdata` package — for downloading road networks, cycle paths, and other physical infrastructure.
+2. **Road casualty data** with the `stats19` package — for accessing official UK road collision and casualty records.
+3. **Propensity to Cycle Tool (PCT) data** with the `pct` package — for retrieving regional travel behavior, commuter flows, and cycling scenarios.
 
-- Find open transport datasets
-- Import origin-destination data
-- Work with OpenStreetMap data
-- Import road safety data with stats19
+---
 
-## Origin-destination data
+## 1. Downloading OSM Highways for Tartu, Estonia
+
+OpenStreetMap (OSM) is a collaborative project to create a free editable map of the world. The `osmdata` R package allows you to query and download OSM data directly using the Overpass API.
+
+Below is a complete, runnable workflow to query and download the highway network for the city of **Tartu, Estonia**, and extract the spatial road lines for mapping or network analysis.
 
 ```r
+#| eval: false
+# Install required packages if not already present
+# install.packages(c("osmdata", "sf", "tidyverse"))
+
+library(osmdata)
+library(sf)
 library(tidyverse)
+
+# Step 1: Geocode the name 'Tartu Estonia' to retrieve its bounding box
+tartu_bbox <- getbb("Tartu Estonia")
+print(tartu_bbox)
+
+# Step 2: Construct the Overpass API query for highways in Tartu
+# We query all features tagged with key = 'highway'
+query <- opq(bbox = tartu_bbox) |>
+  add_osm_feature(key = "highway")
+
+# Step 3: Fetch the spatial data from the Overpass servers
+# This returns an 'osmdata' object containing points, lines, polygons, etc.
+osm_raw <- osmdata_sf(query)
+print(osm_raw)
+
+# Step 4: Extract the road network lines
+# Highways (roads, paths, tracks) are typically represented by lines
+highways_sf <- osm_raw$osm_lines
+
+# Step 5: Clean and inspect the spatial dataset
+# Filter out empty geometry rows and select key columns
+highways_clean <- highways_sf |>
+  filter(!st_is_empty(geometry)) |>
+  select(osm_id, name, highway, maxspeed, geometry)
+
+# Preview the spatial data
+head(highways_clean)
+```
+
+---
+
+## 2. Downloading UK Road Casualty Data with `stats19`
+
+The `stats19` package provides an interface to the UK's official road safety database, which lists all recorded road traffic collisions involving personal injury on public roads in Great Britain since 1979.
+
+The data is divided into three parts: **collisions/crashes** (where, when, and general context of the crash), **casualties** (demographics and severity of injury of the people involved), and **vehicles** (types and features of vehicles involved). 
+
+The following code downloads, processes, and joins the **casualty** and **collision** datasets for a specific year to create a spatial Simple Features (`sf`) dataset of casualties.
+
+```r
+#| eval: false
+# Install required packages if not already present
+# install.packages(c("stats19", "sf", "dplyr"))
+
+library(stats19)
+library(dplyr)
 library(sf)
 
-# Example: reading OD data
-od_data = read_csv("https://example.com/od_data.csv")
+# Step 1: Download raw casualty and collision data for a given year (e.g., 2022)
+# Setting ask = FALSE bypasses interactive download confirmations
+raw_casualties <- get_stats19(year = 2022, type = "casualty", ask = FALSE)
+raw_collisions <- get_stats19(year = 2022, type = "collision", ask = FALSE)
+
+# Step 2: Convert non-geographic collisions into a spatial Simple Features (sf) object
+# Set lonlat = TRUE to transform coordinates from the British National Grid (EPSG:27700) 
+# into standard Latitude/Longitude (WGS84, EPSG:4326)
+collisions_sf <- format_sf(raw_collisions, lonlat = TRUE)
+
+# Step 3: Format casualty attributes
+# Converts raw integer codes (like casualty severity) into human-readable labels
+casualties_formatted <- format_casualties(raw_casualties)
+
+# Step 4: Join the casualty table with the spatial collision data
+# The two datasets share a common unique identifier: 'accident_index'
+casualties_sf <- casualties_formatted |>
+  left_join(collisions_sf, by = "accident_index")
+
+# Step 5: Preview the combined spatial dataset of casualties
+glimpse(casualties_sf)
 ```
 
-## OpenStreetMap data
+---
+
+## 3. Retrieving Cycle Flow Data with the `pct` Package
+
+The Propensity to Cycle Tool (PCT) is a widely-used dashboard and system for sustainable transport planning in the UK. The `pct` package provides programmatic access to PCT data, enabling users to download and analyze commuting and travel patterns at various spatial scales.
+
+Here we download regional **desire lines** (Origin-Destination flow lines) for a UK region (e.g., **West Yorkshire**) to analyze bicycle flows and scenarios of cycling potential (such as the "Go Dutch" scenario).
 
 ```r
-library(osmdata)
+#| eval: false
+# Install required packages if not already present
+# install.packages(c("pct", "sf", "dplyr"))
 
-# Download OSM data for a bounding box
-q = opq("Leeds UK") |>
-  add_osm_feature(key = "highway")
-osm_data = osmdata_sf(q)
-```
+library(pct)
+library(dplyr)
+library(sf)
 
-## Stats19 road safety data
+# Step 1: Download commuter desire lines for the region of interest
+# The default resolution is MSOA (Middle Layer Super Output Area) and 
+# purpose is 'commute'
+wy_lines <- get_pct_lines(region = "west-yorkshire")
 
-```r
-library(stats19)
+# Step 2: Inspect the structure and spatial attributes of the lines
+# Key columns:
+# - 'all': Total commute flow
+# - 'bicycle': Number of current bicycle commutes
+# - 'dutch_slc': Projected bicycle flow under the 'Go Dutch' scenario
+names(wy_lines)
 
-# Download latest road casualty data
-casualties = get_stats19(year = 2023, type = "casualty")
+# Step 3: Select and filter the desire lines
+# We will filter for desire lines with significant cycling potential (> 20 cyclists under Go Dutch)
+wy_cycle_potentials <- wy_lines |>
+  select(geo_name1, geo_name2, all, bicycle, dutch_slc) |>
+  filter(dutch_slc > 20)
+
+# Step 4: Calculate the current vs potential cycle mode split percentage
+wy_cycle_potentials <- wy_cycle_potentials |>
+  mutate(
+    current_pct = (bicycle / all) * 100,
+    potential_pct = (dutch_slc / all) * 100
+  )
+
+# Step 5: Display the summary of top cycle flows
+wy_cycle_potentials |>
+  arrange(desc(dutch_slc)) |>
+  head()
 ```
