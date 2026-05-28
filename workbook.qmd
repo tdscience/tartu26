@@ -2,7 +2,7 @@
 title: "Spatio-temporal data with OD data"
 ---
 
-This workbook builds on the tutorial "Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps" [@kotovAGIT2025Workshop2025].
+This workbook builds on the tutorial "Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps" [@kotovAGIT2025Workshop2025], and the spatio-temporal data [session](https://tdscience.github.io/dstp/s4.html) in the [Data Science for Transport Planning course](https://tdscience.github.io/dstp/).
 
 ## Install the required packages
 
