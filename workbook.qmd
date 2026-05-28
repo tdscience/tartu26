@@ -5,7 +5,7 @@ pagetitle: "Session 4"
 
 # Spatio-temporal data with OD data
 
-This exercise is based on the tutorial "Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps" by Egor Kotov [@kotov2025].
+This exercise is based on the tutorial "Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps" [@kotov2026].
 
 See [ekotov.pro](https://www.ekotov.pro/agit-2025-spanishoddata/) for details
 
@@ -24,19 +24,15 @@ library(tidyverse)
 library(sf)
 ```
 
-
 ## Setting up Mapbox Access Token
-
 
 Get a free token from https://account.mapbox.com/access-tokens/
 
-Or, longer term solution: `usethis::edit_r_environ()`
-Restart R after setting the token for it to take effect
+Or, longer term solution: `usethis::edit_r_environ()` Restart R after setting the token for it to take effect
 
-```r
+``` r
 Sys.setenv(MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN")
 ```
-
 
 ## Download and prepare the data with `spanishoddata`
 
@@ -93,6 +89,7 @@ flowmap_seville_interactive <- flowmapblue(
 # Display the map
 flowmap_seville_interactive
 ```
+
 ```{r}
 #| eval: false
 #| echo: false
@@ -104,7 +101,6 @@ fs::file_size("seville_flowmap.html")
 system("gh release create")
 system("gh release upload v1 seville_flowmap.html")
 ```
-
 
 ## Next steps
 
