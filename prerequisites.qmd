@@ -59,7 +59,12 @@ install.packages("pak")
 pak::pak("tdscience/tartu26")
 ```
 
-Alternatively, you can install them manually:
+Alternatively, you can install them manually.
+
+<details>
+<summary>Manual installation instructions</summary>
+
+If you don't have {pak} installed, you can use `install.packages()` to install the required packages. Running the following code is equivalent to using `pak` to install the dependencies:
 
 ```r
 install.packages(c(
@@ -67,17 +72,23 @@ install.packages(c(
   "sf",
   "tmap",
   "osmdata",
-  "stats19",
   "stplanr",
   "dodgr",
   "spanishoddata",
   "flowmapblue",
-  "mapview",
   "fs",
   "htmlwidgets"
 ))
 ```
 
+</details>
+
 ### Data {#sec-data}
 
-We will use open datasets throughout the workshop. All required data will be downloadable during the sessions, as described in @sec-intro.
+We will use open datasets throughout the workshop. All required data will be downloadable during the sessions, but you may want to download the larger datasets in advance to save time.
+
+See the [releases page](https://github.com/tdscience/tartu26/releases) for links to the datasets used in the workshop.
+
+You are welcome to bring your own origin-destination and network data if you wish to follow along and implement the concepts with your own datasets.
+There will be less support for custom datasets.
+You are encouraged to experiment with your own data after the workshop, and have fun! 

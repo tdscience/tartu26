@@ -11,12 +11,9 @@ Imports:
     flowmapblue,
     fs,
     htmlwidgets,
-    lubridate,
-    mapview,
     osmdata,
     sf,
     spanishoddata,
-    stats19,
     stplanr,
     tidyverse,
     tmap
