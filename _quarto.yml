@@ -1,0 +1,56 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Tartu 2026 Transport Data Science"
+  repo-url: "https://github.com/tdscience/tartu26"
+  repo-actions: [issue]
+  page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/)."
+    left: "Materials by [Robin Lovelace](https://www.robinlovelace.net/), 2026."
+  sidebar:
+    background: primary
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/tdscience/tartu26
+        text: GitHub
+    style: docked
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: schedule.qmd
+        text: Schedule
+      - href: prerequisites.qmd
+        text: Prerequisites
+      - section: "Sessions"
+        contents:
+          - href: s1.qmd
+            text: "Session 1: Finding and importing data"
+          - href: s2.qmd
+            text: "Session 2: Origin-destination analysis"
+          - href: s3.qmd
+            text: "Session 3: Visualisation"
+          - href: s4.qmd
+            text: "Session 4: Spatio-temporal data"
+      - href: https://github.com/tdscience/tartu26/discussions
+        text: Forum
+
+format:
+  html:
+    theme: lux
+    toc: true
+    title-prefix: "Tartu 2026 - "
+    number-sections: true
+    author-meta: "Robin Lovelace & contributors"
+    date-meta: "2026"
+    copyright: "© 2026 Robin Lovelace"
+    license: "CC BY-SA"
+
+execute:
+  freeze: false
+  cache: true
+  message: false
+  warning: false

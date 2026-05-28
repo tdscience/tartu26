@@ -1,0 +1,38 @@
+---
+title: "Session 2: Origin-destination analysis"
+pagetitle: "Session 2"
+---
+
+# Origin-destination data analysis
+
+This session covers analysis of OD data for transport planning.
+
+## Learning objectives
+
+- Understand OD data structures
+- Calculate desire lines
+- Aggregate flows by zone
+- Filter and summarise OD data
+
+## Desire lines
+
+```r
+library(stplanr)
+library(sf)
+
+# Convert OD pairs to desire lines
+zones = read_sf("zones.geojson")
+od_data = read_csv("od_data.csv")
+
+desire_lines = od2line(flow = od_data, zones = zones)
+plot(desire_lines["all"])
+```
+
+## Aggregation
+
+```r
+# Aggregate flows by origin
+flows_by_origin = od_data |>
+  group_by(origin) |>
+  summarise(total_flow = sum(all))
+```

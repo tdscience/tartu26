@@ -1,0 +1,31 @@
+---
+number-sections: false
+---
+
+# Tartu 2026: Transport Data Science
+
+Course materials for the Transport Data Science workshop at the University of Tartu, 2026.
+
+## Overview
+
+This workshop covers modern data science skills for transport planning, including data acquisition, cleaning, analysis, visualisation, and reproducible reporting.
+
+## Learning Objectives
+
+- Understand the role of data science in transport planning
+- Learn how to find, import, clean, and analyse transport data
+- Develop skills in data visualisation and reporting
+- Work with real-world transport datasets using R
+
+## Prerequisites
+
+- Basic knowledge of transport planning concepts
+- Familiarity with R programming
+- A laptop with R and RStudio installed
+- A GitHub account (for GitHub Codespaces fallback)
+
+## Getting Started
+
+Open the repo in GitHub Codespaces or clone locally and open in VS Code with the devcontainer.
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tdscience/tartu26?quickstart=1)

@@ -1,0 +1,36 @@
+---
+title: "Session 5: Routing and route networks"
+pagetitle: "Session 5"
+---
+
+# Routing and route network analysis
+
+This session covers routing and route network analysis using R.
+
+## Learning objectives
+
+- Set up a routing engine interface
+- Calculate routes and distances
+- Use GTFS data
+- Analyse route networks
+
+## Routing with dodgr
+
+```r
+library(dodgr)
+
+# Build a route network
+graph = weight_streetnet(osm_data)
+
+# Find shortest paths
+paths = dodgr_paths(graph, from = c(-1.5, 53.8), to = c(-1.4, 53.7))
+```
+
+## GTFS data
+
+```r
+library(tidytransit)
+
+# Read a GTFS feed
+gtfs = read_gtfs("gtfs.zip")
+```

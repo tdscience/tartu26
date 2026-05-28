@@ -1,0 +1,45 @@
+---
+title: "Session 1: Finding and importing data"
+pagetitle: "Session 1"
+---
+
+# Finding, importing and cleaning transport datasets
+
+This session covers how to find, import, and clean common transport datasets.
+
+## Learning objectives
+
+- Find open transport datasets
+- Import origin-destination data
+- Work with OpenStreetMap data
+- Import road safety data with stats19
+
+## Origin-destination data
+
+```r
+library(tidyverse)
+library(sf)
+
+# Example: reading OD data
+od_data = read_csv("https://example.com/od_data.csv")
+```
+
+## OpenStreetMap data
+
+```r
+library(osmdata)
+
+# Download OSM data for a bounding box
+q = opq("Leeds UK") |>
+  add_osm_feature(key = "highway")
+osm_data = osmdata_sf(q)
+```
+
+## Stats19 road safety data
+
+```r
+library(stats19)
+
+# Download latest road casualty data
+casualties = get_stats19(year = 2023, type = "casualty")
+```

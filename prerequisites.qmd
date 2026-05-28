@@ -1,0 +1,35 @@
+---
+title: "Prerequisites"
+pagetitle: "Prerequisites"
+---
+
+## Software
+
+- R (>= 4.3)
+- RStudio or VS Code
+- Quarto CLI
+- Git
+
+## R packages
+
+Install the following packages before the workshop:
+
+```r
+install.packages(c(
+  "tidyverse",
+  "sf",
+  "tmap",
+  "osmdata",
+  "stats19",
+  "stplanr",
+  "dodgr"
+))
+```
+
+## Data
+
+We will use open datasets throughout the workshop. All data will be downloadable during the sessions.
+
+## GitHub Account
+
+Please create a GitHub account if you do not already have one.

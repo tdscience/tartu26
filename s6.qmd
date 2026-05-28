@@ -1,0 +1,42 @@
+---
+title: "Session 6: Best practices"
+pagetitle: "Session 6"
+---
+
+# Best practices for data science in transport planning
+
+This session covers version control and reproducible research.
+
+## Learning objectives
+
+- Use Git for version control
+- Collaborate with GitHub
+- Create reproducible reports with Quarto
+- Document your workflow
+
+## Git workflow
+
+```bash
+# Initialise a repository
+git init
+
+# Stage and commit changes
+git add .
+git commit -m "Initial commit"
+
+# Push to GitHub
+git push origin main
+```
+
+## Quarto documents
+
+```markdown
+---
+title: "My analysis"
+format: html
+---
+
+# Introduction
+
+This is a reproducible document.
+```
