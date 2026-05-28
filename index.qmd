@@ -25,3 +25,5 @@ If you enjoyed this course, you may want to check out some of the links below:
 - The [Data Science for Transport Planning website](https://tdscience.github.io/dstp/) with more sessions taught over 2 days.
 - The [Transport Data Science](https://itsleeds.github.io/tds) course materials from the University of Leeds, which cover a wider range of topics and datasets.
 - ... Please let us know of more materials in the [issue tracker](https://github.com/tdscience/tartu26/issues)
+
+*Last updated: 2026-05-28*
