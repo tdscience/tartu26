@@ -2,6 +2,9 @@
 number-sections: false
 ---
 
+# Tartu 2026: Transport Data Science
+
+Course materials for the Transport Data Science workshop at the University of Tartu, 2026.
 
 In this workshop you will work through a workbook that guides you through how to work with these datasets and generate meaningful transport planning-related results. Exercises will stretch more advanced attendees.
 
