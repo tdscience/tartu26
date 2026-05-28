@@ -1,0 +1,23 @@
+Package: tartu26
+Title: Tartu 2026 Transport Data Science
+Version: 0.0.1
+Authors@R: person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("aut", "cre"))
+Description: Course materials for the Transport Data Science workshop at the University of Tartu, 2026.
+License: CC BY-SA 4.0
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dodgr,
+    flowmapblue,
+    fs,
+    htmlwidgets,
+    lubridate,
+    mapview,
+    osmdata,
+    sf,
+    spanishoddata,
+    stats19,
+    stplanr,
+    tidyverse,
+    tmap
+RoxygenNote: 7.3.1

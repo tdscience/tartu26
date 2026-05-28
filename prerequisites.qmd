@@ -12,7 +12,14 @@ pagetitle: "Prerequisites"
 
 ## R packages
 
-Install the following packages before the workshop:
+Install the necessary packages for the workshop using the `pak` package:
+
+```r
+install.packages("pak")
+pak::pak("tdscience/tartu26")
+```
+
+Alternatively, you can install them manually:
 
 ```r
 install.packages(c(
@@ -22,7 +29,12 @@ install.packages(c(
   "osmdata",
   "stats19",
   "stplanr",
-  "dodgr"
+  "dodgr",
+  "spanishoddata",
+  "flowmapblue",
+  "mapview",
+  "fs",
+  "htmlwidgets"
 ))
 ```
 
