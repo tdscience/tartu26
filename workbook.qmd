@@ -12,16 +12,8 @@ library(spanishoddata)
 library(flowmapblue)
 library(tidyverse)
 library(sf)
-```
-
-## Setting up Mapbox Access Token
-
-Get a free token from https://account.mapbox.com/access-tokens/
-
-Or, longer term solution: `usethis::edit_r_environ()` Restart R after setting the token for it to take effect
-
-``` r
-Sys.setenv(MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN")
+library(tmap)
+tmap_mode("view")
 ```
 
 ## Download and prepare the data with `spanishoddata`
@@ -91,6 +83,20 @@ fs::file_size("seville_flowmap.html")
 system("gh release create")
 system("gh release upload v1 seville_flowmap.html")
 ```
+
+<details>
+<summary>Getting a Mapbox token</summary>
+
+## Setting up Mapbox Access Token
+
+Get a free token from https://account.mapbox.com/access-tokens/
+
+Or, longer term solution: `usethis::edit_r_environ()` Restart R after setting the token for it to take effect
+
+``` r
+Sys.setenv(MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN")
+```
+</details>
 
 ## Next steps
 
