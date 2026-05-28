@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Tartu 2026 Transport Data Science"
+  title: "Data Science for Transport Planning"
   repo-url: "https://github.com/tdscience/tartu26"
   repo-actions: [issue]
   page-footer:

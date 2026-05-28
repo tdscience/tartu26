@@ -80,6 +80,7 @@ locations_seville <- zones_seville_fua |>
 ## Generate the interactive flow map
 
 ```{r}
+#| eval: false
 flowmap_seville_interactive <- flowmapblue(
   locations = locations_seville,
   flows = flows_seville_time,
