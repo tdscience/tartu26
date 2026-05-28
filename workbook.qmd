@@ -5,15 +5,7 @@ pagetitle: "Session 4"
 
 # Spatio-temporal data with OD data
 
-This exercise is based on the tutorial "Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps" [@kotov2026].
-
-See [ekotov.pro](https://www.ekotov.pro/agit-2025-spanishoddata/) for details
-
--   [Setting up the software](https://www.ekotov.pro/agit-2025-spanishoddata/software-setup.html)
--   [Importing the data](https://www.ekotov.pro/agit-2025-spanishoddata/1-mobility-data.html)
--   [Visualising the data with flowmaps](https://www.ekotov.pro/agit-2025-spanishoddata/2-flowmapping.html)
-
-This is an advanced exercise that benefits from having a fast internet connection, decent compute resources, and an interest in the Iberian Peninsula.
+This workbook builds on the tutorial "Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps" [@kotovAGIT2025Workshop2025].
 
 ## Install the required packages
 
@@ -105,3 +97,9 @@ system("gh release upload v1 seville_flowmap.html")
 ## Next steps
 
 For a detailed walkthrough of analysing origin-destination data in the London Cycle Hire system, see the [DSTP course materials](https://tdscience.github.io/dstp/s3.html#analyisng-origin-destination-data-in-london-cycle-hire-system).
+
+Also see @kotovAGIT2025Workshop2025 which includes:
+
+-   [Setting up the software](https://www.ekotov.pro/agit-2025-spanishoddata/software-setup.html)
+-   [Importing the data](https://www.ekotov.pro/agit-2025-spanishoddata/1-mobility-data.html)
+-   [Visualising the data with flowmaps](https://www.ekotov.pro/agit-2025-spanishoddata/2-flowmapping.html)
