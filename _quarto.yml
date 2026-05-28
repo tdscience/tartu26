@@ -21,12 +21,12 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: workbook.qmd
-        text: Workbook
       - href: prerequisites.qmd
         text: Prerequisites
-      - href: https://tdscience.github.io/dstp/
-        text: Full Course Materials
+      - href: workbook.qmd
+        text: Workbook
+      - href: https://github.com/tdscience/tartu26
+        text: Source code
 
 format:
   html:
@@ -36,7 +36,7 @@ format:
     number-sections: true
     author-meta: "Robin Lovelace & contributors"
     date-meta: "2026"
-    copyright: "© 2026 Robin Lovelace"
+    copyright: "© 2026 Robin Lovelace, Juan Fonseca, and contributors"
     license: "CC BY-SA"
 
 execute:
