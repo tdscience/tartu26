@@ -2,24 +2,26 @@
 number-sections: false
 ---
 
-# Tartu 2026: Transport Data Science
 
-Course materials for the Transport Data Science workshop at the University of Tartu, 2026.
+In this workshop you will work through a workbook that guides you through how to work with these datasets and generate meaningful transport planning-related results. Exercises will stretch more advanced attendees.
 
-## Overview
 
-This workshop covers modern data science skills for transport planning, including data acquisition, cleaning, analysis, visualisation, and reproducible reporting.
+## Getting Started
+
+The quickest way to get started is on GitHub Codespaces, which you can launch by clicking the link below:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tdscience/tartu26?quickstart=1)
+
+See the [prerequisites](prerequisites.qmd) for more details on how to set up your environment.
 
 ## Workshop Workbook
 
 The main practical content is in the [workbook](workbook.qmd).
 
-## Full Course Materials
+## Further reading
 
-For the complete 2-day course with all 7 sessions, see the [Data Science for Transport Planning website](https://tdscience.github.io/dstp/).
+If you enjoyed this course, you may want to check out some of the links below:
 
-## Getting Started
-
-Open the repo in GitHub Codespaces or clone locally and open in VS Code with the devcontainer.
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tdscience/tartu26?quickstart=1)
+- The [Data Science for Transport Planning website](https://tdscience.github.io/dstp/) with more sessions taught over 2 days.
+- The [Transport Data Science](https://itsleeds.github.io/tds) course materials from the University of Leeds, which cover a wider range of topics and datasets.
+- ... Please let us know of more materials in the [issue tracker](https://github.com/tdscience/tartu26/issues)
