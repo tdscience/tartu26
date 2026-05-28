@@ -3,6 +3,11 @@ title: "Prerequisites"
 pagetitle: "Prerequisites"
 ---
 
+## Introduction
+
+Welcome to the Mobile Tartu 2026 Transport Data Science workshop! 
+
+
 ## Software
 
 - R (>= 4.3)
