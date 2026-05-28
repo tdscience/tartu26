@@ -1,9 +1,6 @@
 ---
-title: "Spatio-temporal data"
-pagetitle: "Session 4"
+title: "Spatio-temporal data with OD data"
 ---
-
-# Spatio-temporal data with OD data
 
 This workbook builds on the tutorial "Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps" [@kotovAGIT2025Workshop2025].
 
