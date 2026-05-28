@@ -44,3 +44,5 @@ execute:
   cache: true
   message: false
   warning: false
+
+bibliography: references.bib
