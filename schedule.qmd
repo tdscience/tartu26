@@ -9,11 +9,11 @@ pagetitle: "Workshop Schedule"
 | Time          | Session                                                                 |   |
 |---------------|-------------------------------------------------------------------------|:---:|
 | 10:00 - 11:00 | Introduction to Data Science for Transport Planning                     |   |
-| 11:00 - 12:30 | Finding, importing and cleaning transport datasets                      | [{{< bi file-earmark-code size=1.5em >}}](s1.qmd)  |
+| 11:00 - 12:30 | Finding, importing and cleaning transport datasets                      | [[Code]](s1.qmd)  |
 | 12:30 - 13:30 | Lunch                                                                  |   |
-| 13:30 - 15:00 | Origin-destination data analysis                                        | [{{< bi file-earmark-code size=1.5em >}}](s2.qmd)    |
+| 13:30 - 15:00 | Origin-destination data analysis                                        | [[Code]](s2.qmd)    |
 | 15:00 - 15:15 | Break and refreshments                                                 |    |
-| 15:15 - 17:00 | OD Transport data visualisation                                        | [{{< bi file-earmark-code size=1.5em >}}](s3.qmd) |
+| 15:15 - 17:00 | OD Transport data visualisation                                        | [[Code]](s3.qmd) |
 
 : {tbl-colwidths="[20,75,5]" .striped}
 
@@ -21,11 +21,11 @@ pagetitle: "Workshop Schedule"
 
 | Time          | Session                                                                 |   |
 |---------------|-------------------------------------------------------------------------|:---:|
-| 09:00 - 10:45 | Spatio-temporal data                                                    | [{{< bi file-earmark-code size=1.5em >}}](s4.qmd) |
+| 09:00 - 10:45 | Spatio-temporal data                                                    | [[Code]](s4.qmd) |
 | 10:45 - 11:15 | Break and refreshments                                                 | |
-| 11:15 - 12:30 | Routing and route network analysis                                      | [{{< bi file-earmark-code size=1.5em >}}](s5.qmd)|
+| 11:15 - 12:30 | Routing and route network analysis                                      | [[Code]](s5.qmd)|
 | 12:30 - 13:30 | Lunch                                                                  | |
-| 13:30 - 15:00 | Best practices: version control and reproducible research               | [{{< bi file-earmark-code size=1.5em >}}](s6.qmd) |
-| 15:00 - 16:00 | Advanced topics and deploying work                                      | [{{< bi file-earmark-code size=1.5em >}}](s7.qmd)  |
+| 13:30 - 15:00 | Best practices: version control and reproducible research               | [[Code]](s6.qmd) |
+| 15:00 - 16:00 | Advanced topics and deploying work                                      | [[Code]](s7.qmd)  |
 
 : {tbl-colwidths="[20,75,5]" .striped}
