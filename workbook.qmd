@@ -15,9 +15,7 @@ There are four options for this practical session:
 
 1. Get stuck-into open access CDR (call detail records) data from Spain using the `spanishoddata` package (detailed below with example for Seville)
 
-2. Revisit the London Cycle Hire data from session 3 and visualize flows using the `flowmapblue` package
-
-3. Explore changes in the spatial and temporal distributions of road traffic collisions using the [`stats19` package](https://itsleeds.github.io/stats19/)
+2. Explore changes in the spatial and temporal distributions of road traffic collisions using the [`stats19` package](https://itsleeds.github.io/stats19/)
 
 4. Bring your own data (BYOD)!
 
@@ -143,55 +141,7 @@ system("gh release create")
 system("gh release upload v1 seville_flowmap.html")
 ```
 
-## Option 2: London Cycle Hire flow visualization
-
-To extend the analysis from session 3, prepare the cycle hire data as origin-destination flows with timestamps (e.g., from start/end stations and times). Then use `flowmapblue` for interactive visualization.
-
-See the [`flowmapblue` vignette](https://github.com/riatelab/flowmapblue/blob/main/vignettes/flowmapblue.Rmd) for details.
-
-```{r}
-#| label: flowmap-london
-#| eval: false
-#| echo: true
-#| code-summary: "Skeleton for London Cycle Hire flow map"
-
-# Load libraries (assuming data prepared as in s3.qmd)
-library(flowmapblue)
-library(tidyverse)
-library(sf)
-
-# Assume 'cycle_data' is loaded with columns: origin_id, dest_id, time (POSIXct), count
-# And 'stations' sf with id, lon, lat
-
-# Prepare locations (stations)
-locations_london <- stations |>
-  st_transform(crs = 4326) |>
-  st_coordinates() |>
-  as.data.frame() |>
-  mutate(id = stations$id) |>
-  rename(lon = X, lat = Y)
-
-# Prepare flows (aggregate if needed)
-flows_london <- cycle_data |>
-  group_by(origin = origin_id, dest = dest_id, time) |>
-  summarise(count = n(), .groups = "drop")  # or sum trips
-
-# Create interactive flow map
-flowmap_london <- flowmapblue(
-  locations = locations_london,
-  flows = flows_london,
-  mapboxAccessToken = Sys.getenv("MAPBOX_TOKEN"),
-  animation = TRUE,
-  clustering = TRUE
-)
-
-flowmap_london
-
-# Save
-htmlwidgets::saveWidget(flowmap_london, "london_flowmap.html")
-```
-
-## Option 3: Road traffic collisions with stats19
+## Option 2: Road traffic collisions with stats19
 
 The [`stats19`](https://itsleeds.github.io/stats19/) package provides access to detailed road safety data for Great Britain, including timestamps and locations for spatio-temporal analysis.
 
@@ -245,7 +195,7 @@ ggplot(temporal_changes, aes(x = hour, fill = factor(year))) +
 
 For spatial analysis, filter to your area of interest and use `tmap` or `ggplot` with `sf`. See [`stats19` articles](https://itsleeds.github.io/stats19/articles/stats19.html) for more.
 
-## Option 4: Bring your own data (BYOD)
+## Option 3: Bring your own data (BYOD)
 
 If you have access to your own spatio-temporal transport data (e.g., GPS trajectories, sensor data, or time-stamped OD matrices):
 
@@ -255,3 +205,7 @@ If you have access to your own spatio-temporal transport data (e.g., GPS traject
 4. Analyze: explore temporal patterns with `tsibble` or `lubridate`, spatial with `sf`.
 
 Share your results or challenges in the discussion!
+
+## Next steps
+
+For a detailed walkthrough of analysing origin-destination data in the London Cycle Hire system, see the [DSTP course materials](https://tdscience.github.io/dstp/s3.html#analyisng-origin-destination-data-in-london-cycle-hire-system).
