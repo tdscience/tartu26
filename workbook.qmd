@@ -10,6 +10,7 @@ This workbook builds on the tutorial "Analysing massive open human mobility data
 ## Install the required packages
 
 ```{r}
+#| eval: false
 library(spanishoddata)
 library(flowmapblue)
 library(tidyverse)
