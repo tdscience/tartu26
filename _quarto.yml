@@ -21,22 +21,12 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: schedule.qmd
-        text: Schedule
+      - href: workbook.qmd
+        text: Workbook
       - href: prerequisites.qmd
         text: Prerequisites
-      - section: "Sessions"
-        contents:
-          - href: s1.qmd
-            text: "Session 1: Finding and importing data"
-          - href: s2.qmd
-            text: "Session 2: Origin-destination analysis"
-          - href: s3.qmd
-            text: "Session 3: Visualisation"
-          - href: s4.qmd
-            text: "Session 4: Spatio-temporal data"
-      - href: https://github.com/tdscience/tartu26/discussions
-        text: Forum
+      - href: https://tdscience.github.io/dstp/
+        text: Full Course Materials
 
 format:
   html:

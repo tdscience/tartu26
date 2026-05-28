@@ -15,7 +15,7 @@ There are four options for this practical session:
 
 1. Get stuck-into open access CDR (call detail records) data from Spain using the `spanishoddata` package (detailed below with example for Seville)
 
-2. Revisit the London Cycle Hire data from [session 3](s3.qmd) and visualize flows using the `flowmapblue` package
+2. Revisit the London Cycle Hire data from session 3 and visualize flows using the `flowmapblue` package
 
 3. Explore changes in the spatial and temporal distributions of road traffic collisions using the [`stats19` package](https://itsleeds.github.io/stats19/)
 
@@ -145,7 +145,7 @@ system("gh release upload v1 seville_flowmap.html")
 
 ## Option 2: London Cycle Hire flow visualization
 
-To extend the analysis from [session 3](s3.qmd), prepare the cycle hire data as origin-destination flows with timestamps (e.g., from start/end stations and times). Then use `flowmapblue` for interactive visualization.
+To extend the analysis from session 3, prepare the cycle hire data as origin-destination flows with timestamps (e.g., from start/end stations and times). Then use `flowmapblue` for interactive visualization.
 
 See the [`flowmapblue` vignette](https://github.com/riatelab/flowmapblue/blob/main/vignettes/flowmapblue.Rmd) for details.
 
