@@ -139,9 +139,6 @@ install.packages(c(
 
 </details>
 
-## The outcome: an interactive flow map of Seville
-
-{{< include demo.qmd >}}
 
 ### Data {#sec-data}
 
@@ -150,3 +147,43 @@ We will use open datasets throughout the workshop. All required data will be dow
 See the [releases page](https://github.com/tdscience/tartu26/releases) for links to the datasets used in the workshop.
 
 You are welcome to bring your own origin-destination and network data if you wish to follow along and implement the concepts with your own datasets. There will be less support for custom datasets. You are encouraged to experiment with your own data after the workshop, and have fun!
+
+## The outcome: an interactive flow map of Seville
+
+{{< include demo.qmd >}}
+
+
+```{r}
+#| echo: false
+#| results: hide
+htmlwidgets::saveWidget(
+  flowmap_seville_interactive,
+  file = "docs/seville_flowmap_embed.html",
+  selfcontained = TRUE
+)
+```
+
+```{=html}
+<style>
+  .flowmap-embed {
+    width: 100%;
+    height: clamp(420px, 72vh, 860px);
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .flowmap-embed {
+      height: clamp(360px, 58vh, 620px);
+    }
+  }
+</style>
+
+<iframe
+  src="seville_flowmap_embed.html"
+  title="Interactive flow map of Seville"
+  class="flowmap-embed"
+  loading="lazy">
+</iframe>
+```
