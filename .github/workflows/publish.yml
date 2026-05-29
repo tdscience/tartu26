@@ -18,10 +18,12 @@ jobs:
     timeout-minutes: 30
     container:
       image: ghcr.io/itsleeds/tds:latest
-      options: --user root
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Mark workspace as safe for git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
