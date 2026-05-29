@@ -16,6 +16,21 @@ Open the repo in GitHub Codespaces or clone locally and open in VS Code with the
 
 Visit [https://tdscience.github.io/tartu26/](https://tdscience.github.io/tartu26/) for the rendered course materials.
 
+## Publishing
+
+Use the helper script to publish to GitHub Pages non-interactively and run a quick post-deploy check:
+
+```bash
+./scripts/publish-gh-pages.sh
+```
+
+Manual equivalent:
+
+```bash
+printf 'Y\n' | quarto publish gh-pages
+curl -s https://tdscience.github.io/tartu26/prerequisites.html | rg -n "flowmap-embed|seville_flowmap_embed\.html|paste-3\.png"
+```
+
 ## Sessions
 
 1. Finding and importing data
