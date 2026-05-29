@@ -2,6 +2,7 @@ This is a minimal, reproducible demo extracted from [workbook.qmd](workbook.qmd)
 If you haven't already installed the packages, you can do so with:
 
 ```{r}
+#| label: demo-install-dependencies
 #| eval: false
 pak::pak("tdscience/tartu26")
 library(flowmapblue)

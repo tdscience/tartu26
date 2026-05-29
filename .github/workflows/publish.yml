@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     container:
       image: ghcr.io/itsleeds/tds:latest
       options: --user root
