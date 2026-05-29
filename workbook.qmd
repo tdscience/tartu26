@@ -53,6 +53,40 @@ locations_seville <- zones_seville_fua |>
   mutate(id = zones_seville_fua$id) |>
   rename(lon = X, lat = Y)
 
+# Uncomment to re-download and process OD data from source
+flows <- spod_get(
+  type = "origin-destination",
+  zones = "districts",
+  dates = recent_dates
+)
+
+od_data_time <- flows |>
+  mutate(time = as.POSIXct(paste0(date, "T", hour, ":00:00"))) |>
+  group_by(origin = id_origin, dest = id_destination, time) |>
+  summarise(count = sum(n_trips, na.rm = TRUE), .groups = "drop") |>
+  collect()
+
+flows_seville_time <- od_data_time |>
+  filter(origin %in% zones_seville_fua$id & dest %in% zones_seville_fua$id)
+
+saveRDS(flows_seville_time, "flows_seville_time.rds")
+saveRDS(locations_seville, "locations_seville.rds")
+
+# Load precomputed data to keep runtime short for workshop use
+if (!file.exists("flows_seville_time.rds")) {
+  # If gh is available and authenticated, this may download the file quickly.
+  system("gh release download v1 --pattern flows_seville_time.rds")
+}
+
+if (!file.exists("flows_seville_time.rds")) {
+  download.file(
+    "https://github.com/tdscience/dstp/releases/download/v1/flows_seville_time.rds",
+    "flows_seville_time.rds"
+  )
+}
+
+flows_seville_time <- readRDS("flows_seville_time.rds")
+
 ```
 
 ## Generate the interactive flow map
