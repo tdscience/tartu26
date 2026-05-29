@@ -196,7 +196,9 @@ You are encouraged to experiment with your own data after the workshop, and have
 
 After running the code shown below, from [`demo.qmd`](https://github.com/tdscience/tartu26/blob/main/demo.qmd), you should see an interactive flow map of Seville in the Viewer pane of your IDE.
 
-{{< include demo.qmd >}}
+<!-- {{< include demo.qmd >}} -->
+
+![](images/paste-4.png)
 
 ```{r}
 #| echo: false
@@ -211,12 +213,11 @@ htmlwidgets::saveWidget(
 system("gh release upload v1 docs/seville_flowmap_embed.html --repo tdscience/tartu26 --clobber")
 ```
 
-
-
 See an interactive version of the map by downloading and then releasing the `seville_flowmap_embed.html` file from the [github.com/tdscience/tartu26/releases page](https://github.com/tdscience/tartu26/releases/download/v1/seville_flowmap_embed.html).
 
 ```{=html}
-<style>
+<!-- Commented-out as it slowed-down page loading. -->
+<!-- <style>
   .flowmap-embed {
     width: 100%;
     height: clamp(420px, 72vh, 860px);
@@ -237,5 +238,5 @@ See an interactive version of the map by downloading and then releasing the `sev
   title="Interactive flow map of Seville"
   class="flowmap-embed"
   loading="lazy">
-</iframe>
+</iframe> -->
 ```
