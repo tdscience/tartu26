@@ -8,7 +8,7 @@ library(tidyverse)
 
 ```{r}
 #| label: flowmap-seville-demo
-#| echo: false
+#| eval: false
 url_flows <- "https://github.com/tdscience/tartu26/releases/download/v1/flows_seville_time.csv"
 flows_seville_time <- read_csv(url_flows)
 url_locations <- "https://github.com/tdscience/tartu26/releases/download/v1/locations_seville.csv"

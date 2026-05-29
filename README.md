@@ -27,7 +27,7 @@ Use the helper script to publish to GitHub Pages non-interactively and run a qui
 Manual equivalent:
 
 ```bash
-printf 'Y\n' | quarto publish gh-pages
+quarto publish gh-pages --no-prompt --no-browser
 curl -s https://tdscience.github.io/tartu26/prerequisites.html | rg -n "flowmap-embed|seville_flowmap_embed\.html|paste-3\.png"
 ```
 
