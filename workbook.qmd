@@ -22,6 +22,8 @@ Download a load of data from Spain!
 
 ![](https://github.com/rOpenSpain/spanishoddata/raw/main/man/figures/logo.png)
 
+### Seville case study
+
 ```{r}
 #| label: flowmap-seville
 #| eval: false
@@ -89,7 +91,78 @@ flows_seville_time <- readRDS("flows_seville_time.rds")
 
 ```
 
+### Northern Spain case study: Pamplona to Donostia corridor
+
+As an alternative to Seville, you can explore mobility patterns in Northern Spain, covering the Basque Country and Navarre regions. This area includes the cities of Pamplona (Iruña) and Donostia (San Sebastián), stretches from the French border to the Bay of Biscay coast, and forms a roughly rectangular study area whose east--west extent is longer than its north--south extent.
+
+Rather than filtering by a text pattern (as with Seville), we define the study area geographically with a bounding box and select all districts that intersect it. The province codes in the zone `id` field can also be used: Navarre = `31`, Gipuzkoa = `20`, Bizkaia = `48`, and Álava = `01`.
+
+```{r}
+#| label: flowmap-northern-spain
+#| eval: false
+#| echo: true
+#| code-summary: "Reproducible example of an interactive flow map for Northern Spain"
+
+# Get zones
+zones <- spod_get_zones(zones = "distr", ver = 2)
+valid_dates <- spod_get_valid_dates(2)
+recent_dates = tail(valid_dates, 3)
+
+# Define a geographic bounding box for the Northern Spain study area
+# Covers from the coast to south of Pamplona, and from the French border
+# westward to include the Pamplona--Donostia corridor
+bbox_north <- st_bbox(
+  c(xmin = -2.5, ymin = 42.6, xmax = -1.0, ymax = 43.5),
+  crs = st_crs(4326)
+)
+bbox_sf <- st_as_sfc(bbox_north)
+
+# Select zones that intersect the bounding box
+sf::sf_use_s2(FALSE)
+zones_wgs84 <- st_transform(zones, 4326)
+zones_north <- zones_wgs84[st_intersects(zones_wgs84, bbox_sf, sparse = FALSE)[, 1], ]
+
+# Visualise the selected zones
+plot(st_geometry(zones_north))
+
+# Prepare location data (centroids) for the flow map
+locations_north <- zones_north |>
+  st_centroid() |>
+  st_coordinates() |>
+  as.data.frame() |>
+  mutate(id = zones_north$id) |>
+  rename(lon = X, lat = Y)
+
+# Download OD data (uncomment to re-download from source)
+# flows <- spod_get(
+#   type = "origin-destination",
+#   zones = "districts",
+#   dates = recent_dates
+# )
+#
+# od_data_time <- flows |>
+#   mutate(time = as.POSIXct(paste0(date, "T", hour, ":00:00"))) |>
+#   group_by(origin = id_origin, dest = id_destination, time) |>
+#   summarise(count = sum(n_trips, na.rm = TRUE), .groups = "drop") |>
+#   collect()
+#
+# flows_north_time <- od_data_time |>
+#   filter(origin %in% zones_north$id & dest %in% zones_north$id)
+#
+# saveRDS(flows_north_time, "flows_north_time.rds")
+# saveRDS(locations_north, "locations_north.rds")
+
+# For workshop use, load precomputed data if available
+if (file.exists("flows_north_time.rds")) {
+  flows_north_time <- readRDS("flows_north_time.rds")
+} else {
+  message("Precomputed Northern Spain data not found. Run the download block above.")
+}
+```
+
 ## Generate the interactive flow map
+
+### Seville flow map
 
 ```{r}
 #| eval: false
@@ -106,16 +179,34 @@ flowmap_seville_interactive <- flowmapblue(
 flowmap_seville_interactive
 ```
 
+### Northern Spain flow map
+
+```{r}
+#| label: flowmap-northern-spain-render
+#| eval: false
+#| echo: true
+#| code-summary: "Render the interactive flow map for Northern Spain"
+
+flowmap_north_interactive <- flowmapblue(
+  locations = locations_north,
+  flows = flows_north_time,
+  mapboxAccessToken = Sys.getenv("MAPBOX_TOKEN"),
+  darkMode = TRUE,
+  animation = FALSE,
+  clustering = TRUE
+)
+
+# Display the map
+flowmap_north_interactive
+```
+
 ```{r}
 #| eval: false
 #| echo: false
 
-# Save the map as an HTML file
+# Save the maps as HTML files
 htmlwidgets::saveWidget(flowmap_seville_interactive, "seville_flowmap.html")
-system("firefox seville_flowmap.html")
-fs::file_size("seville_flowmap.html")
-system("gh release create")
-system("gh release upload v1 seville_flowmap.html")
+htmlwidgets::saveWidget(flowmap_north_interactive, "north_spain_flowmap.html")
 ```
 
 <details>
@@ -128,11 +219,29 @@ Get a free token from https://account.mapbox.com/access-tokens/
 Or, longer term solution: `usethis::edit_r_environ()` Restart R after setting the token for it to take effect
 
 ``` r
-Sys.setenv(MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN")
+Sys.setenv(MAPBOX_TOKEN="YOUR_MAPBOX_ACCESS_TOKEN")
 ```
 </details>
 
-## Next steps
+## Research questions
+
+Below are suggested research questions you can explore with the `spanishoddata` package and the tools introduced in this workbook. They range from descriptive to analytical and are designed to be tractable within a short workshop or assignment.
+
+1. **Temporal commuting patterns** -- How do morning and evening peak flows differ between weekdays and weekends? Can you identify distinct commuter corridors within your chosen study area?
+
+2. **Cross-border mobility** -- The v2 data includes trips to and from France. What proportion of flows in the Northern Spain study area cross the international border, and how does this vary by time of day?
+
+3. **Socio-demographic differences** -- Using the `income`, `age`, and `sex` variables available in v2, do flow patterns differ between demographic groups? For example, do higher-income groups travel further or at different times?
+
+4. **Functional urban area definition** -- Compare the 10 km buffer approach used for Seville with the bounding-box approach used for Northern Spain. How sensitive are the resulting flow patterns to the choice of study area boundary?
+
+5. **Activity-purpose flows** -- The `activity_origin` and `activity_destination` fields classify trips by purpose (home, work, regular, irregular, study). What is the dominant flow purpose in your study area, and how does the spatial structure of work-related flows differ from leisure-related flows?
+
+6. **Intra-zonal vs inter-zonal trips** -- Intra-zonal trips (where origin equals destination) often dominate OD datasets. What share of trips are intra-zonal in your study area, and how does excluding them change the visual pattern of the flow map?
+
+7. **Seasonal or special-event variation** -- If you download data for multiple time periods, can you detect changes in mobility associated with public holidays, festivals (e.g., San Fermín in Pamplona), or seasonal tourism patterns along the coast?
+
+8. **Comparative urban analysis** -- Replicate the analysis for both Seville and Northern Spain. Which city has higher average trip distances? Which shows more polycentric flow patterns (multiple distinct centres rather than a single dominant hub)?
 
 For a detailed walkthrough of analysing origin-destination data in the London Cycle Hire system, see the [DSTP course materials](https://tdscience.github.io/dstp/s3.html#analyisng-origin-destination-data-in-london-cycle-hire-system).
 
