@@ -25,7 +25,7 @@ At a minimum, you should be able to reproduce the figure show at the end of this
 
 For the cloud-based option, you can run the workshop environment entirely in your web browser. This is the fastest and easiest way to get started.
 
-### GitHub Account {#sec-github}
+### GitHub {#sec-github}
 
 To use GitHub Codespaces or access repository resources, you must have a GitHub account. Go to [GitHub](https://github.com) and sign-up if you haven't already done so.
 
@@ -33,11 +33,26 @@ After you have a GitHub account, you can launch the workspace in GitHub Codespac
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tdscience/tartu26?quickstart=1)
 
-You can run any repo in a Codespace by clicking on the green "Code" button and selecting "Open with Codespaces" in any GitHub repository, as described in the [GitHub documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and shown below:
+<details>
+<summary>About GitHub</summary>
 
-![](https://docs.github.com/assets/cb-60499/mw-1440/images/help/repository/https-url-clone-cli.webp)
+While you wait for that to load, it's worth learning a bit about what GitHub is: it's the world's number one platform for hosting and collaborating on code, especially for international and open-source projects, although you can easily host 'private repos' also, allowing you to choose who can see and collaborate on your work.
+Key concepts in GitHub include:
 
-(The "Local" clone --- with HTTPS, ssh or GitHub CLI options --- are for cloning the repository to your local machine, which is not required if you are using Codespaces, but may be useful if you want to work on the materials locally, as described in @sec-local.)
+- Repositories, also called repos. These are like folders for your projects, where you can store code, data, and documentation. The workshop materials are hosted in a GitHub repository. See the [GitHub repository for the workshop at github.com/tdscience/tartu26](https://github.com/tdscience/tartu26) for more details.
+- Issues. These are like to-do lists or bug trackers for your code. You can use them to keep track of tasks, bugs, or feature requests for your projects. See the [Issues tab in the workshop repository](https://github.com/tdscience/tartu26/issues) and open a test issue if you want to practice, it's a great way to communicate, learn, get feedback and collaborate with others.
+- Pull requests. These are like proposals for changes to your code. You can use them to suggest changes, review code, and merge changes into your projects. See the [Pull Requests tab in the workshop repository](https://github.com/tdscience/tartu26/pulls) for more details. Bonus: open a PR making a change to the README file, it's a great way to practice and learn about how PRs work (see the [GitHub documentation on pull requests](https://docs.github.com/en/pull-requests) for more details).
+- Commits. These are like snapshots of your code at a given point in time. 
+- Branches. These are like different versions of your code that you can work on separately and then merge together.
+
+You can run the code in any GitHub repo in Codespaces by clicking on the green "Code" button and selecting "Open with Codespaces", as described in the [GitHub documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and shown below.
+Try to see the options in the green "Code" button for the [workshop repository](https://github.com/tdscience/tartu26), and try cloning locally or downloading the zip file to see the different options available as a bonus. The "Codespaces" option is the one to launch the cloud-based environment for the workshop, while the "Download ZIP" option allows you to download the repository files to your local machine without using Git.
+
+![](https://docs.github.com/assets/cb-60499/mw-1440/images/help/repository/https-url-clone-cli.webp){width=50%}
+
+The "Local" clone --- with HTTPS, ssh or GitHub CLI options --- are for cloning the repository to your local machine, which is not required if you are using Codespaces, but may be useful if you want to work on the materials locally, as described in @sec-local.
+
+</details>
 
 After the Codespace has finished 'spinning-up', you will see something like this:
 
