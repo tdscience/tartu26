@@ -42,7 +42,8 @@ After you have a GitHub account, you can launch the workspace in GitHub Codespac
 
 When you click on that button, assuming you're signed in and do not have any existing codespaces associated with the repo already running, you should see a page with default settings for the codespace.
 You can leave them all as is **except for machine type**.
-We will be handline a lot of data so **select the 4-core option**.
+
+We will be handling a lot of data so **select the 4-core option**.
 This gives you 16 GB RAM on a machine with 60 hours of [free use per month](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces#free-quota).
 That should be plenty for processing the datasets we'll using in this tutorial.
 Go for a larger option if you want to import larger datasets but be warned that your compute credits will burn down quicker the larger the machine you're on, as described in the [GitHub Codespaces pricing docs](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces).
