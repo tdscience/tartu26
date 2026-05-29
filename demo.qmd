@@ -4,10 +4,12 @@ This is a minimal, reproducible demo extracted from [workbook.qmd](workbook.qmd)
 pak::pak("tdscience/tartu26")
 library(flowmapblue)
 library(tidyverse)
+library(htmlwidgets)
 ```
 
 ```{r}
 #| label: flowmap-seville-demo
+#| echo: false
 url_flows <- "https://github.com/tdscience/tartu26/releases/download/v1/flows_seville_time.csv"
 flows_seville_time <- read_csv(url_flows)
 url_locations <- "https://github.com/tdscience/tartu26/releases/download/v1/locations_seville.csv"
@@ -20,8 +22,24 @@ flowmap_seville_interactive <- flowmapblue(
   animation = FALSE,
   clustering = TRUE
 )
+# 'Print' the object to render the widget directly:
+# flowmap_seville_interactive
 
-flowmap_seville_interactive
+# Save a standalone widget file and embed it via iframe to isolate styles/scripts.
+htmlwidgets::saveWidget(
+  flowmap_seville_interactive,
+  file = "docs/seville_flowmap_embed.html",
+  selfcontained = TRUE
+)
+```
+
+```{=html}
+<iframe
+  src="seville_flowmap_embed.html"
+  title="Interactive flow map of Seville"
+  style="width: 100%; height: 760px; border: 1px solid #d9d9d9; border-radius: 8px;"
+  loading="lazy">
+</iframe>
 ```
 
 <details>
