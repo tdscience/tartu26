@@ -223,13 +223,177 @@ Sys.setenv(MAPBOX_TOKEN="YOUR_MAPBOX_ACCESS_TOKEN")
 ```
 </details>
 
+## Cross-border analysis: Spain--France border effect
+
+One of the most interesting research questions we can tackle with the Northern Spain study area is: **to what extent does the national border between Spain and France act as a barrier to human mobility?** The v2 spanishoddata data includes French zones (with IDs starting `FR`) alongside Spanish zones, making it possible to quantify the "border deterrence effect" -- the reduction in travel attributable to the presence of an international boundary, after controlling for distance.
+
+### Approach
+
+Our analysis proceeds in five steps:
+
+1.  **Identify French and Spanish zones** in the study area using the zone ID prefix (`FR` = France, all-numeric = Spain).
+2.  **Classify each OD pair** as cross-border (ES--FR), within-Spain (ES--ES), or within-France (FR--FR).
+3.  **Aggregate trip volumes** by hour and border-crossing status to reveal temporal patterns.
+4.  **Estimate the border effect** by comparing trip counts at comparable distances: for each distance band, what is the ratio of within-Spain trips to cross-border trips?
+5.  **Visualise** the results as a distance-decay comparison plot.
+
+```{r}
+#| label: cross-border-analysis
+#| eval: false
+#| echo: true
+#| code-summary: "Quantifying the Spain--France border effect on mobility"
+
+# ── 1. Load zones and classify by country ──────────────────────────────
+sf::sf_use_s2(FALSE)
+zones <- spod_get_zones(zones = "distr", ver = 2)
+
+# Recreate the Northern Spain study area
+bbox_north <- st_bbox(
+  c(xmin = -2.5, ymin = 42.6, xmax = -1.0, ymax = 43.5),
+  crs = st_crs(4326)
+)
+bbox_sf <- st_as_sfc(bbox_north)
+zones_wgs84 <- st_transform(zones, 4326)
+zones_north <- zones_wgs84[
+  st_intersects(zones_wgs84, bbox_sf, sparse = FALSE)[, 1],
+]
+
+# Tag each zone by country
+zones_north <- zones_north |>
+  mutate(country = ifelse(grepl("^FR", id), "FR", "ES"))
+
+cat("Zones in study area:", nrow(zones_north), "\n")
+cat("  Spanish:", sum(zones_north$country == "ES"), "\n")
+cat("  French: ", sum(zones_north$country == "FR"), "\n")
+
+# ── 2. Get OD data and classify each pair ───────────────────────────
+valid_dates <- spod_get_valid_dates(2)
+recent_dates <- tail(valid_dates, 3)
+
+flows <- spod_get(
+  type = "origin-destination",
+  zones = "districts",
+  dates = recent_dates
+)
+
+# Build a lookup table: zone ID → country
+zone_country <- zones_north |>
+  st_drop_geometry() |>
+  select(id, country)
+
+# Filter to study-area zones and tag each OD pair
+od_north <- flows |>
+  filter(
+    id_origin %in% zones_north$id,
+    id_destination %in% zones_north$id
+  ) |>
+  left_join(zone_country, by = c("id_origin" = "id")) |>
+  rename(country_origin = country) |>
+  left_join(zone_country, by = c("id_destination" = "id")) |>
+  rename(country_dest = country) |>
+  mutate(
+    border_crossing = case_when(
+      country_origin != country_dest ~ "cross-border",
+      country_origin == "ES"         ~ "within-Spain",
+      country_origin == "FR"         ~ "within-France"
+    )
+  )
+
+# ── 3. Temporal patterns by border status ──────────────────────────
+hourly_by_border <- od_north |>
+  group_by(hour, border_crossing) |>
+  summarise(
+    total_trips = sum(n_trips, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  collect()
+
+# Plot: trip volumes by hour, faceted by border status
+ggplot(hourly_by_border, aes(x = hour, y = total_trips, colour = border_crossing)) +
+  geom_line(linewidth = 1) +
+  scale_y_log10(labels = scales::comma) +
+  labs(
+    title = "Hourly trip volumes by border-crossing status",
+    subtitle = paste("Northern Spain study area,", 
+                     paste(recent_dates, collapse = ", ")),
+    x = "Hour of day",
+    y = "Total trips (log scale)",
+    colour = "Flow type"
+  ) +
+  theme_minimal()
+
+# ── 4. Distance-decay comparison ───────────────────────────────────
+# Compare within-Spain vs cross-border flows at similar distances
+dist_comparison <- od_north |>
+  filter(distance > 0, distance < 100) |>    # exclude intra-zonal (d=0) and extreme
+  mutate(dist_band = cut(distance, breaks = seq(0, 100, by = 10))) |>
+  group_by(dist_band, border_crossing) |>
+  summarise(
+    total_trips = sum(n_trips, na.rm = TRUE),
+    n_pairs     = n(),
+    .groups     = "drop"
+  ) |>
+  collect()
+
+# Calculate the border deterrence ratio
+border_ratio <- dist_comparison |>
+  filter(border_crossing %in% c("within-Spain", "cross-border")) |>
+  tidyr::pivot_wider(
+    id_cols     = dist_band,
+    names_from  = border_crossing,
+    values_from = total_trips,
+    values_fill = 0
+  ) |>
+  mutate(
+    deterrence_ratio = `within-Spain` / (`cross-border` + 1),  # +1 avoids Inf
+    deterrence_label = paste0(round(deterrence_ratio, 1), "×")
+  )
+
+ggplot(border_ratio, aes(x = dist_band, y = deterrence_ratio)) +
+  geom_col(fill = "steelblue", alpha = 0.7) +
+  geom_text(aes(label = deterrence_label), vjust = -0.3, size = 3) +
+  labs(
+    title = "Border deterrence effect by distance band",
+    subtitle = "Ratio of within-Spain to cross-border trips (>1 = border deters travel)",
+    x = "Distance band (km)",
+    y = "Within-Spain / Cross-border trip ratio"
+  ) +
+  theme_minimal()
+
+# ── 5. Summary statistics ──────────────────────────────────────────
+cat("\n=== Summary: Border effect ===\n")
+total_cross <- sum(hourly_by_border$total_trips[
+  hourly_by_border$border_crossing == "cross-border"
+])
+total_spain <- sum(hourly_by_border$total_trips[
+  hourly_by_border$border_crossing == "within-Spain"
+])
+cat(sprintf("Cross-border trips: %s (%.1f%% of all trips)\n",
+  scales::comma(total_cross),
+  100 * total_cross / (total_cross + total_spain)
+))
+```
+
+### Interpretation
+
+- **Temporal pattern**: Cross-border flows typically show a flatter daily profile than within-Spain commuting flows, suggesting more leisure/tourism travel and less routine commuting across the border.
+- **Distance-decay**: The `deterrence_ratio` column shows how many more within-Spain trips occur than cross-border trips at the same distance. A ratio of, say, 10× at the 10--20 km band means there are 10 times more trips between Spanish zones 15 km apart than between a Spanish and French zone 15 km apart.
+- **Key question**: At what distance does the border effect become negligible? If the ratio approaches 1 at longer distances, the border may primarily suppress short-distance local trips.
+
+### Further exploration
+
+- Repeat the analysis for **weekdays vs weekends** to see if cross-border commuting is more common on certain days.
+- Use the `activity_origin` field to see whether cross-border trips are predominantly work, leisure, or study-related.
+- Expand the study area westward to include **Bilbao** and compare the border effect at Irun/Hendaye (major crossing) versus more remote Pyrenean crossings.
+- Download a **full month** of data and examine how the border effect changes on public holidays and during school vacations.
+
 ## Research questions
 
 Below are suggested research questions you can explore with the `spanishoddata` package and the tools introduced in this workbook. They range from descriptive to analytical and are designed to be tractable within a short workshop or assignment.
 
 1. **Temporal commuting patterns** -- How do morning and evening peak flows differ between weekdays and weekends? Can you identify distinct commuter corridors within your chosen study area?
 
-2. **Cross-border mobility** -- The v2 data includes trips to and from France. What proportion of flows in the Northern Spain study area cross the international border, and how does this vary by time of day?
+2. **Cross-border mobility** -- The v2 data includes trips to and from France. What proportion of flows in the Northern Spain study area cross the international border, and how does this vary by time of day? *(See the cross-border analysis section above for a worked example.)*
 
 3. **Socio-demographic differences** -- Using the `income`, `age`, and `sex` variables available in v2, do flow patterns differ between demographic groups? For example, do higher-income groups travel further or at different times?
 
