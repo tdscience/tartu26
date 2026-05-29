@@ -1,0 +1,159 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tartu 2026 Transport Data Science",
+    "section": "",
+    "text": "This workshop teaches you how to work with these datasets and generate meaningful transport planning-related results. Exercises will stretch more advanced attendees.\nIt is based on data from the {spanishoddata} (Kotov et al. 2026), a package that was conceived during Mobile Tartu 2024, which provides access to a large spatio-temporal dataset of origin-destination (OD) flows in Spain.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Tartu 2026 Transport Data Science",
+    "section": "Getting Started",
+    "text": "Getting Started\nThe quickest way to get started is on GitHub Codespaces, which you can launch by clicking the link below:\n\n\n\nOpen in GitHub Codespaces\n\n\nSee the prerequisites for more details on how to set up your environment.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#workshop-workbook",
+    "href": "index.html#workshop-workbook",
+    "title": "Tartu 2026 Transport Data Science",
+    "section": "Workshop Workbook",
+    "text": "Workshop Workbook\nThe main practical content is in the workbook.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#further-reading",
+    "href": "index.html#further-reading",
+    "title": "Tartu 2026 Transport Data Science",
+    "section": "Further reading",
+    "text": "Further reading\nIf you enjoyed this course, you may want to check out some of the links below:\n\nThe Data Science for Transport Planning website with more sessions taught over 2 days.\nThe Transport Data Science course materials from the University of Leeds, which cover a wider range of topics and datasets.\n… Please let us know of more materials in the issue tracker\n\nLast updated: 2026-05-28",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "prerequisites.html",
+    "href": "prerequisites.html",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "Welcome to the Mobile Tartu 2026 Transport Data Science workshop! This document outlines the prerequisites for the workshop. There are two main ways to run the workshop materials:\n\nCloud-based setup using GitHub Codespaces, Posit Cloud, or similar services (see Section 2).\nLocal setup on your computer (see Section 3).\n\nWithin each approach, there are various options for software and data setup.\nWhich to use? It depends:\n\nIf you want the fastest and easiest way to get started, the cloud-based option is recommended.\nIf you prefer to work on your own machine, want to learn about installing and setting-up software for future use, and have a decent laptop that you have admin rights for, the local setup is a good option.\n\nIf in doubt, start with the cloud-based option to get going quickly, and then explore the local setup if you want to learn more about the software and data management aspects. Whichever option you choose, ensure you have a good handle on the software and data setup before the workshop to make the most of the session.\nAt a minimum, you should be able to reproduce the figure show at the end of this document, which is an interactive flow map of Seville using the spanishoddata package.",
+    "crumbs": [
+      "Prerequisites"
+    ]
+  },
+  {
+    "objectID": "prerequisites.html#sec-intro",
+    "href": "prerequisites.html#sec-intro",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "Welcome to the Mobile Tartu 2026 Transport Data Science workshop! This document outlines the prerequisites for the workshop. There are two main ways to run the workshop materials:\n\nCloud-based setup using GitHub Codespaces, Posit Cloud, or similar services (see Section 2).\nLocal setup on your computer (see Section 3).\n\nWithin each approach, there are various options for software and data setup.\nWhich to use? It depends:\n\nIf you want the fastest and easiest way to get started, the cloud-based option is recommended.\nIf you prefer to work on your own machine, want to learn about installing and setting-up software for future use, and have a decent laptop that you have admin rights for, the local setup is a good option.\n\nIf in doubt, start with the cloud-based option to get going quickly, and then explore the local setup if you want to learn more about the software and data management aspects. Whichever option you choose, ensure you have a good handle on the software and data setup before the workshop to make the most of the session.\nAt a minimum, you should be able to reproduce the figure show at the end of this document, which is an interactive flow map of Seville using the spanishoddata package.",
+    "crumbs": [
+      "Prerequisites"
+    ]
+  },
+  {
+    "objectID": "prerequisites.html#sec-cloud",
+    "href": "prerequisites.html#sec-cloud",
+    "title": "Prerequisites",
+    "section": "2 Cloud Setup",
+    "text": "2 Cloud Setup\nFor the cloud-based option, you can run the workshop environment entirely in your web browser. This is the fastest and easiest way to get started.\n\n2.1 GitHub\nTo use GitHub Codespaces or access repository resources, you must have a GitHub account. Go to GitHub and sign-up if you haven’t already done so.\nAfter you have a GitHub account, you can launch the workspace in GitHub Codespaces by clicking the badge below. Note: it takes around 5 minutes to set up the Codespace environment, so be patient, read-up on some of the links in this website, or get a coffee!\n\n\n\nOpen in GitHub Codespaces\n\n\nWhen you click on that button, assuming you’re signed in and do not have any existing codespaces associated with the repo already running, you should see a page with default settings for the codespace. You can leave them all as is except for machine type.\nWe will be handling a lot of data so select the 4-core option. This gives you 16 GB RAM on a machine with 60 hours of free use per month. That should be plenty for processing the datasets we’ll using in this tutorial. Go for a larger option if you want to import larger datasets but be warned that your compute credits will burn down quicker the larger the machine you’re on, as described in the GitHub Codespaces pricing docs.\n\n\n\nAbout GitHub\n\nWhile you wait for that to load, it’s worth learning a bit about what GitHub is: it’s the world’s number one platform for hosting and collaborating on code, especially for international and open-source projects, although you can easily host ‘private repos’ also, allowing you to choose who can see and collaborate on your work. Key concepts in GitHub include:\n\nRepositories, also called repos. These are like folders for your projects, where you can store code, data, and documentation. The workshop materials are hosted in a GitHub repository. See the GitHub repository for the workshop at github.com/tdscience/tartu26 for more details.\nIssues. These are like to-do lists or bug trackers for your code. You can use them to keep track of tasks, bugs, or feature requests for your projects. See the Issues tab in the workshop repository and open a test issue if you want to practice, it’s a great way to communicate, learn, get feedback and collaborate with others.\nPull requests. These are like proposals for changes to your code. You can use them to suggest changes, review code, and merge changes into your projects. See the Pull Requests tab in the workshop repository for more details. Bonus: open a PR making a change to the README file, it’s a great way to practice and learn about how PRs work (see the GitHub documentation on pull requests for more details).\nCommits. These are like snapshots of your code at a given point in time.\nBranches. These are like different versions of your code that you can work on separately and then merge together.\n\nYou can run the code in any GitHub repo in Codespaces by clicking on the green “Code” button and selecting “Open with Codespaces”, as described in the GitHub documentation and shown below. Try to see the options in the green “Code” button for the workshop repository, and try cloning locally or downloading the zip file to see the different options available as a bonus. The “Codespaces” option is the one to launch the cloud-based environment for the workshop, while the “Download ZIP” option allows you to download the repository files to your local machine without using Git.\n\nThe “Local” clone — with HTTPS, ssh or GitHub CLI options — are for cloning the repository to your local machine, which is not required if you are using Codespaces, but may be useful if you want to work on the materials locally, as described in Section 3.\n\nAfter the Codespace has finished ‘spinning-up’, you will see something like this:\n\n\n\nA successfully loaded GitHub Codespaces session for this repository, with the file explorer on the left, a README preview in the editor, and a ready-to-use terminal at the bottom.\n\n\nThere are a few things worth noting about the Codespace environment shown above:\n\nThe repository files are visible in the Explorer pane on the left (including .devcontainer, Quarto files, and workshop documents), confirming that the workspace has loaded correctly.\nThe editor opens files directly in the browser-based VS Code interface. In the screenshot, README.md is shown in preview mode.\nThe integrated terminal at the bottom is ready to run commands in the project directory (/workspaces/tartu26). This is where you can run workshop code and render Quarto documents.\nIf your environment took around 5 minutes to start, this is expected for first launch: once loaded, you can proceed with the exercises normally.\nYou have a unique Codespace URL (e.g. https://tdscience-tartu26-abc123-xyz456.codespaces.github.com) that you can bookmark and return to later, and share with others if you want to collaborate.\n\nFrom that point, you’re almost ready to start writing and running code for the workshop! It’s worth being aware of a few different ways to run code interactively in the Codespace environment.\n\n\n\n\n\n\nWays to run code in GitHub Codespaces:\n\nTerminal: You can run any command-line code directly in the integrated terminal. This is useful for running scripts, installing packages, or executing commands that don’t require an interactive environment.\nQuarto Documents: You can open the .qmd files in the editor and run code chunks interactively by typing Ctrl+Enter (or Cmd+Enter on Mac) to run the code line-by-line (or even selected parts of code), the recommended way. You can also use the “Run” buttons that appear when you hover over code chunks. This allows you to execute code and see results inline, which is great for learning and experimentation.\nJupyter Notebooks: If you have Jupyter notebooks in the repository, you can open them in the editor and run cells interactively, similar to how you would in a local Jupyter environment.\nquarto render and quarto preview: For rendering the entire Quarto documents, you can use the terminal to run quarto render &lt;filename.qmd&gt; to generate the output files (e.g. HTML), or quarto preview &lt;filename.qmd&gt; to render and open a live preview in the browser.\n\n\n\n\nTo check that the code runs for this tutorial, open the demo.qmd file in the editor and run the code chunks interactively using Ctrl+Enter (or Cmd+Enter on Mac) to execute the code line-by-line.\nIf it worked it should look something like this:\n\nOther cloud services are available.  One that is well-suited for data science is Posit Cloud.  For these cloud services, you may still need to install the required packages the first time you launch a new session (see Section 3.2).\n\n\n2.2 Position Cloud\n\n\nInstructions for Posit Cloud\n\nTBC but go to posit.cloud and create an account, then create a new project and link it to the GitHub repository for the workshop.",
+    "crumbs": [
+      "Prerequisites"
+    ]
+  },
+  {
+    "objectID": "prerequisites.html#sec-local",
+    "href": "prerequisites.html#sec-local",
+    "title": "Prerequisites",
+    "section": "3 Local Setup",
+    "text": "3 Local Setup\nIf you prefer to run the workshop materials on your own computer, you will need to install the software listed in Section 3.1 and the R packages described in Section 3.2.\n\nThe workshop materials support both R and Python development paths. You are free to follow either path depending on your preference.\n\n3.1 Software Requirements\nPlease ensure you have the following software installed on your machine:\n\nLanguage Runtimes:\n\nR (&gt;= 4.3): Required for the R path.\nPython (&gt;= 3.10): Required for the Python path.\n\nPopular IDE Options:\n\nVS Code: A versatile, modern, and powerful code editor.\nPosit (such as Positron): A next-generation IDE built by Posit, tailored for multi-language data science.\nRStudio: The classic, widely-used IDE for R development.\n\nQuarto CLI: Used to compile and render the workshop documents and workbook.\nGit: Version control software to manage code and download files.\n\n\n\n3.2 R Packages\nInstall the necessary packages for the workshop using the pak package (recommended):\ninstall.packages(\"pak\")\npak::pak(\"tdscience/tartu26\")\nAlternatively, you can install them manually.\n\n\nManual installation instructions\n\nIf you don’t have {pak} installed, you can use install.packages() to install the required packages. Running the following code is equivalent to using pak to install the dependencies:\ninstall.packages(c(\n  \"tidyverse\",\n  \"sf\",\n  \"tmap\",\n  \"osmdata\",\n  \"spanishoddata\",\n  \"flowmapblue\",\n  \"fs\",\n  \"htmlwidgets\"\n))",
+    "crumbs": [
+      "Prerequisites"
+    ]
+  },
+  {
+    "objectID": "prerequisites.html#the-outcome-an-interactive-flow-map-of-seville",
+    "href": "prerequisites.html#the-outcome-an-interactive-flow-map-of-seville",
+    "title": "Prerequisites",
+    "section": "4 The outcome: an interactive flow map of Seville",
+    "text": "4 The outcome: an interactive flow map of Seville\nAfter running the code above, you should see an interactive flow map of Seville in the Viewer pane of your IDE. See\nThis is a minimal, reproducible demo extracted from workbook.qmd to generate the Seville interactive flow map.\n\npak::pak(\"tdscience/tartu26\")\nlibrary(flowmapblue)\nlibrary(tidyverse)\n\n\nurl_flows &lt;- \"https://github.com/tdscience/tartu26/releases/download/v1/flows_seville_time.csv\"\nflows_seville_time &lt;- read_csv(url_flows)\nurl_locations &lt;- \"https://github.com/tdscience/tartu26/releases/download/v1/locations_seville.csv\"\nlocations_seville &lt;- read_csv(url_locations)\nflowmap_seville_interactive &lt;- flowmapblue(\n  locations = locations_seville,\n  flows = flows_seville_time,\n  mapboxAccessToken = Sys.getenv(\"MAPBOX_TOKEN\"),\n  darkMode = TRUE,\n  animation = FALSE,\n  clustering = TRUE\n)\n# 'Print' the object to render the widget directly:\n# flowmap_seville_interactive\n\n\n\nGetting a Mapbox token\n\nGet a free token from https://account.mapbox.com/access-tokens/\nSys.setenv(MAPBOX_TOKEN = \"YOUR_MAPBOX_ACCESS_TOKEN\")\n\nSee an interactive version of the map by downloading and then releasing the seville_flowmap_embed.html file from the github.com/tdscience/tartu26/releases page.",
+    "crumbs": [
+      "Prerequisites"
+    ]
+  },
+  {
+    "objectID": "demo.html",
+    "href": "demo.html",
+    "title": "Tartu 2026 Transport Data Science",
+    "section": "",
+    "text": "This is a minimal, reproducible demo extracted from workbook.qmd to generate the Seville interactive flow map.\n\npak::pak(\"tdscience/tartu26\")\nlibrary(flowmapblue)\nlibrary(tidyverse)\n\n\nurl_flows &lt;- \"https://github.com/tdscience/tartu26/releases/download/v1/flows_seville_time.csv\"\nflows_seville_time &lt;- read_csv(url_flows)\nurl_locations &lt;- \"https://github.com/tdscience/tartu26/releases/download/v1/locations_seville.csv\"\nlocations_seville &lt;- read_csv(url_locations)\nflowmap_seville_interactive &lt;- flowmapblue(\n  locations = locations_seville,\n  flows = flows_seville_time,\n  mapboxAccessToken = Sys.getenv(\"MAPBOX_TOKEN\"),\n  darkMode = TRUE,\n  animation = FALSE,\n  clustering = TRUE\n)\n# 'Print' the object to render the widget directly:\n# flowmap_seville_interactive\n\n\n\nGetting a Mapbox token\n\nGet a free token from https://account.mapbox.com/access-tokens/\nSys.setenv(MAPBOX_TOKEN = \"YOUR_MAPBOX_ACCESS_TOKEN\")\n\n\n\n\nReuseCC BY-SA 4.0Copyright© 2026 Robin Lovelace, Juan Fonseca, and contributors"
+  },
+  {
+    "objectID": "workbook.html",
+    "href": "workbook.html",
+    "title": "Spatio-temporal data with OD data",
+    "section": "",
+    "text": "This workbook builds on the tutorial “Analysing massive open human mobility data in R using spanishoddata, duckdb and flowmaps” (Kotov 2025), and the spatio-temporal data session in the Data Science for Transport Planning course.",
+    "crumbs": [
+      "Workbook"
+    ]
+  },
+  {
+    "objectID": "workbook.html#install-the-required-packages",
+    "href": "workbook.html#install-the-required-packages",
+    "title": "Spatio-temporal data with OD data",
+    "section": "1 Install the required packages",
+    "text": "1 Install the required packages\n\nlibrary(spanishoddata)\nlibrary(flowmapblue)\nlibrary(tidyverse)\nlibrary(sf)\nlibrary(tmap)\ntmap_mode(\"view\")",
+    "crumbs": [
+      "Workbook"
+    ]
+  },
+  {
+    "objectID": "workbook.html#download-and-prepare-the-data-with-spanishoddata",
+    "href": "workbook.html#download-and-prepare-the-data-with-spanishoddata",
+    "title": "Spatio-temporal data with OD data",
+    "section": "2 Download and prepare the data with spanishoddata",
+    "text": "2 Download and prepare the data with spanishoddata\nDownload a load of data from Spain!\n\n\n# Get OD data for the most recently days\nzones &lt;- spod_get_zones(zones = \"distr\", ver = 2)\nvalid_dates &lt;- spod_get_valid_dates(2)\nrecent_dates = tail(valid_dates, 3)\n\n# Identify zones corresponding to Seville\nzones_seville &lt;- zones |&gt;\n  filter(grepl(\"^Sevilla distrito\", name, ignore.case = TRUE))\nmapview::mapview(zones_seville)\n\n# Create a 10km buffer to define the Functional Urban Area (FUA)\nzones_seville_fua &lt;- zones[st_buffer(zones_seville, dist = 10000), ]\nplot(st_geometry(zones_seville_fua))\n\n# Prepare the location data (centroids) for the flow map\nsf::sf_use_s2(FALSE)\nlocations_seville &lt;- zones_seville_fua |&gt;\n  st_transform(crs = 4326) |&gt;\n  st_centroid() |&gt;\n  st_coordinates() |&gt;\n  as.data.frame() |&gt;\n  mutate(id = zones_seville_fua$id) |&gt;\n  rename(lon = X, lat = Y)\n\n# Uncomment to re-download and process OD data from source\nflows &lt;- spod_get(\n  type = \"origin-destination\",\n  zones = \"districts\",\n  dates = recent_dates\n)\n\nod_data_time &lt;- flows |&gt;\n  mutate(time = as.POSIXct(paste0(date, \"T\", hour, \":00:00\"))) |&gt;\n  group_by(origin = id_origin, dest = id_destination, time) |&gt;\n  summarise(count = sum(n_trips, na.rm = TRUE), .groups = \"drop\") |&gt;\n  collect()\n\nflows_seville_time &lt;- od_data_time |&gt;\n  filter(origin %in% zones_seville_fua$id & dest %in% zones_seville_fua$id)\n\nsaveRDS(flows_seville_time, \"flows_seville_time.rds\")\nsaveRDS(locations_seville, \"locations_seville.rds\")\n\n# Load precomputed data to keep runtime short for workshop use\nif (!file.exists(\"flows_seville_time.rds\")) {\n  # If gh is available and authenticated, this may download the file quickly.\n  system(\"gh release download v1 --pattern flows_seville_time.rds\")\n}\n\nif (!file.exists(\"flows_seville_time.rds\")) {\n  download.file(\n    \"https://github.com/tdscience/dstp/releases/download/v1/flows_seville_time.rds\",\n    \"flows_seville_time.rds\"\n  )\n}\n\nflows_seville_time &lt;- readRDS(\"flows_seville_time.rds\")",
+    "crumbs": [
+      "Workbook"
+    ]
+  },
+  {
+    "objectID": "workbook.html#generate-the-interactive-flow-map",
+    "href": "workbook.html#generate-the-interactive-flow-map",
+    "title": "Spatio-temporal data with OD data",
+    "section": "3 Generate the interactive flow map",
+    "text": "3 Generate the interactive flow map\n\nflowmap_seville_interactive &lt;- flowmapblue(\n  locations = locations_seville,\n  flows = flows_seville_time,\n  mapboxAccessToken = Sys.getenv(\"MAPBOX_TOKEN\"),\n  darkMode = TRUE,\n  animation = FALSE,\n  clustering = TRUE\n)\n\n# Display the map\nflowmap_seville_interactive\n\n\n\nGetting a Mapbox token",
+    "crumbs": [
+      "Workbook"
+    ]
+  },
+  {
+    "objectID": "workbook.html#setting-up-mapbox-access-token",
+    "href": "workbook.html#setting-up-mapbox-access-token",
+    "title": "Spatio-temporal data with OD data",
+    "section": "4 Setting up Mapbox Access Token",
+    "text": "4 Setting up Mapbox Access Token\nGet a free token from https://account.mapbox.com/access-tokens/\nOr, longer term solution: usethis::edit_r_environ() Restart R after setting the token for it to take effect\nSys.setenv(MAPBOX_TOKEN = \"YOUR_MAPBOX_ACCESS_TOKEN\")",
+    "crumbs": [
+      "Workbook"
+    ]
+  },
+  {
+    "objectID": "workbook.html#next-steps",
+    "href": "workbook.html#next-steps",
+    "title": "Spatio-temporal data with OD data",
+    "section": "5 Next steps",
+    "text": "5 Next steps\nFor a detailed walkthrough of analysing origin-destination data in the London Cycle Hire system, see the DSTP course materials.\nAlso see Kotov (2025) which includes:\n\nSetting up the software\nImporting the data\nVisualising the data with flowmaps",
+    "crumbs": [
+      "Workbook"
+    ]
+  }
+]
