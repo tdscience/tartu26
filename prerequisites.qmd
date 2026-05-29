@@ -5,38 +5,31 @@ pagetitle: "Prerequisites"
 
 ## Introduction {#sec-intro}
 
-Welcome to the Mobile Tartu 2026 Transport Data Science workshop!
-This document outlines the prerequisites for the workshop.
-There are two main ways to run the workshop materials:
+Welcome to the Mobile Tartu 2026 Transport Data Science workshop! This document outlines the prerequisites for the workshop. There are two main ways to run the workshop materials:
 
 1.  **Cloud-based setup** using GitHub Codespaces, Posit Cloud, or similar services (see @sec-cloud).
 2.  **Local setup** on your computer (see @sec-local).
 
 Within each approach, there are various options for software and data setup.
 
-Which to use?
-It depends:
+Which to use? It depends:
 
--   If you want the fastest and easiest way to get started, the cloud-based option is recommended.
--   If you prefer to work on your own machine, want to learn about installing and setting-up software for future use, and have a decent laptop that you have admin rights for, the local setup is a good option.
+- If you want the fastest and easiest way to get started, the cloud-based option is recommended.
+- If you prefer to work on your own machine, want to learn about installing and setting-up software for future use, and have a decent laptop that you have admin rights for, the local setup is a good option.
 
-If in doubt, start with the cloud-based option to get going quickly, and then explore the local setup if you want to learn more about the software and data management aspects.
-Whichever option you choose, ensure you have a good handle on the software and data setup before the workshop to make the most of the session.
+If in doubt, start with the cloud-based option to get going quickly, and then explore the local setup if you want to learn more about the software and data management aspects. Whichever option you choose, ensure you have a good handle on the software and data setup before the workshop to make the most of the session.
 
 At a minimum, you should be able to reproduce the figure show at the end of this document, which is an interactive flow map of Seville using the `spanishoddata` package.
 
 ## Cloud Setup {#sec-cloud}
 
-For the cloud-based option, you can run the workshop environment entirely in your web browser.
-This is the fastest and easiest way to get started.
+For the cloud-based option, you can run the workshop environment entirely in your web browser. This is the fastest and easiest way to get started.
 
 ### GitHub Account {#sec-github}
 
-To use GitHub Codespaces or access repository resources, you must have a GitHub account.
-Go to [GitHub](https://github.com) and sign-up if you haven't already done so.
+To use GitHub Codespaces or access repository resources, you must have a GitHub account. Go to [GitHub](https://github.com) and sign-up if you haven't already done so.
 
-After you have a GitHub account, you can launch the workspace in GitHub Codespaces by clicking the badge below.
-**Note: it takes around 5 minutes to set up the Codespace environment, so be patient, read-up on some of the links in this website, or get a coffee!**
+After you have a GitHub account, you can launch the workspace in GitHub Codespaces by clicking the badge below. **Note: it takes around 5 minutes to set up the Codespace environment, so be patient, read-up on some of the links in this website, or get a coffee!**
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tdscience/tartu26?quickstart=1)
 
@@ -56,29 +49,29 @@ There are a few things worth noting about the Codespace environment shown above:
 2.  The editor opens files directly in the browser-based VS Code interface. In the screenshot, `README.md` is shown in preview mode.
 3.  The integrated terminal at the bottom is ready to run commands in the project directory (`/workspaces/tartu26`). This is where you can run workshop code and render Quarto documents.
 4.  If your environment took around 5 minutes to start, this is expected for first launch: once loaded, you can proceed with the exercises normally.
-5. You have a unique Codespace URL (e.g. `https://tdscience-tartu26-abc123-xyz456.codespaces.github.com`) that you can bookmark and return to later, and share with others if you want to collaborate.
+5.  You have a unique Codespace URL (e.g. `https://tdscience-tartu26-abc123-xyz456.codespaces.github.com`) that you can bookmark and return to later, and share with others if you want to collaborate.
 
-From that point, you're almost ready to start writing and running code for the workshop!
-It's worth being aware of a few different ways to run code interactively in the Codespace environment.
+From that point, you're almost ready to start writing and running code for the workshop! It's worth being aware of a few different ways to run code interactively in the Codespace environment.
 
 ::: callout
-
 Ways to run code in GitHub Codespaces:
 
-1. **Terminal**: You can run any command-line code directly in the integrated terminal. This is useful for running scripts, installing packages, or executing commands that don't require an interactive environment.
+1.  **Terminal**: You can run any command-line code directly in the integrated terminal. This is useful for running scripts, installing packages, or executing commands that don't require an interactive environment.
 
-2. **Quarto Documents**: You can open the `.qmd` files in the editor and run code chunks interactively by typing Ctrl+Enter (or Cmd+Enter on Mac) to run the code line-by-line (or even selected parts of code), the recommended way. You can also use the "Run" buttons that appear when you hover over code chunks. This allows you to execute code and see results inline, which is great for learning and experimentation.
+2.  **Quarto Documents**: You can open the `.qmd` files in the editor and run code chunks interactively by typing Ctrl+Enter (or Cmd+Enter on Mac) to run the code line-by-line (or even selected parts of code), the recommended way. You can also use the "Run" buttons that appear when you hover over code chunks. This allows you to execute code and see results inline, which is great for learning and experimentation.
 
-3. **Jupyter Notebooks**: If you have Jupyter notebooks in the repository, you can open them in the editor and run cells interactively, similar to how you would in a local Jupyter environment.
+3.  **Jupyter Notebooks**: If you have Jupyter notebooks in the repository, you can open them in the editor and run cells interactively, similar to how you would in a local Jupyter environment.
 
-4. **`quarto render` and `quarto preview`**: For rendering the entire Quarto documents, you can use the terminal to run `quarto render <filename.qmd>` to generate the output files (e.g. HTML), or `quarto preview <filename.qmd>` to render and open a live preview in the browser.
-
+4.  **`quarto render` and `quarto preview`**: For rendering the entire Quarto documents, you can use the terminal to run `quarto render <filename.qmd>` to generate the output files (e.g. HTML), or `quarto preview <filename.qmd>` to render and open a live preview in the browser.
 :::
 
 To check that the code runs for this tutorial, open the `demo.qmd` file in the editor and run the code chunks interactively using Ctrl+Enter (or Cmd+Enter on Mac) to execute the code line-by-line.
 
-Alternatively, you can run the workshop materials using Posit Cloud or similar web services.
-Note that for these cloud services, you may still need to install the required packages (see @sec-packages).
+If it worked it should look something like this:
+
+![](images/paste-2.png)
+
+Other cloud services are available. One that is well-suited for data science is Posit Cloud. For these cloud services, you may still need to install the required packages the first time you launch a new session (see @sec-packages).
 
 ### Position Cloud {#sec-posit}
 
@@ -96,22 +89,21 @@ If you prefer to run the workshop materials on your own computer, you will need 
 
 <details>
 
-The workshop materials support both **R** and **Python** development paths.
-You are free to follow either path depending on your preference.
+The workshop materials support both **R** and **Python** development paths. You are free to follow either path depending on your preference.
 
 ### Software Requirements {#sec-software}
 
 Please ensure you have the following software installed on your machine:
 
--   **Language Runtimes**:
-    -   **R (\>= 4.3)**: Required for the R path.
-    -   **Python (\>= 3.10)**: Required for the Python path.
--   **Popular IDE Options**:
-    -   **VS Code**: A versatile, modern, and powerful code editor.
-    -   **Posit** (such as Positron): A next-generation IDE built by Posit, tailored for multi-language data science.
-    -   **RStudio**: The classic, widely-used IDE for R development.
--   **Quarto CLI**: Used to compile and render the workshop documents and workbook.
--   **Git**: Version control software to manage code and download files.
+- **Language Runtimes**:
+  - **R (\>= 4.3)**: Required for the R path.
+  - **Python (\>= 3.10)**: Required for the Python path.
+- **Popular IDE Options**:
+  - **VS Code**: A versatile, modern, and powerful code editor.
+  - **Posit** (such as Positron): A next-generation IDE built by Posit, tailored for multi-language data science.
+  - **RStudio**: The classic, widely-used IDE for R development.
+- **Quarto CLI**: Used to compile and render the workshop documents and workbook.
+- **Git**: Version control software to manage code and download files.
 
 ### R Packages {#sec-packages}
 
@@ -128,8 +120,7 @@ Alternatively, you can install them manually.
 
 <summary>Manual installation instructions</summary>
 
-If you don't have {pak} installed, you can use `install.packages()` to install the required packages.
-Running the following code is equivalent to using `pak` to install the dependencies:
+If you don't have {pak} installed, you can use `install.packages()` to install the required packages. Running the following code is equivalent to using `pak` to install the dependencies:
 
 ``` r
 install.packages(c(
@@ -154,11 +145,8 @@ install.packages(c(
 
 ### Data {#sec-data}
 
-We will use open datasets throughout the workshop.
-All required data will be downloadable during the sessions, but you may want to download the larger datasets in advance to save time.
+We will use open datasets throughout the workshop. All required data will be downloadable during the sessions, but you may want to download the larger datasets in advance to save time.
 
 See the [releases page](https://github.com/tdscience/tartu26/releases) for links to the datasets used in the workshop.
 
-You are welcome to bring your own origin-destination and network data if you wish to follow along and implement the concepts with your own datasets.
-There will be less support for custom datasets.
-You are encouraged to experiment with your own data after the workshop, and have fun!
+You are welcome to bring your own origin-destination and network data if you wish to follow along and implement the concepts with your own datasets. There will be less support for custom datasets. You are encouraged to experiment with your own data after the workshop, and have fun!

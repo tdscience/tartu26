@@ -1,43 +1,17 @@
 This is a minimal, reproducible demo extracted from [workbook.qmd](workbook.qmd) to generate the Seville interactive flow map.
 
 ```{r}
-#| eval: false
 pak::pak("tdscience/tartu26")
-library(spanishoddata)
 library(flowmapblue)
 library(tidyverse)
-library(sf)
 ```
 
 ```{r}
 #| label: flowmap-seville-demo
-#| eval: false
-#| echo: true
-#| code-summary: "Minimal example: interactive flow map for Seville"
-
-# Get OD zones and recent dates
-zones <- spod_get_zones(zones = "distr", ver = 2)
-valid_dates <- spod_get_valid_dates(2)
-recent_dates <- tail(valid_dates, 3)
-
-# Identify Seville districts and define a functional urban area (10 km buffer)
-zones_seville <- zones |>
-  filter(grepl("^Sevilla distrito", name, ignore.case = TRUE))
-zones_seville_fua <- zones[st_buffer(zones_seville, dist = 10000), ]
-
-# Prepare centroid locations for flowmapblue
-sf::sf_use_s2(FALSE)
-locations_seville <- zones_seville_fua |>
-  st_transform(crs = 4326) |>
-  st_centroid() |>
-  st_coordinates() |>
-  as.data.frame() |>
-  mutate(id = zones_seville_fua$id) |>
-  rename(lon = X, lat = Y)
-
-# NOTE: Ensure flows_seville_time is created before running this block.
-flows_seville_time <- readRDS("flows_seville_time.rds") # Load pre-processed flows data
-locations_seville <- readRDS("locations_seville.rds") # Load pre-processed locations data
+url_flows <- "https://github.com/tdscience/tartu26/releases/download/v1/flows_seville_time.csv"
+flows_seville_time <- read_csv(url_flows)
+url_locations <- "https://github.com/tdscience/tartu26/releases/download/v1/locations_seville.csv"
+locations_seville <- read_csv(url_locations)
 flowmap_seville_interactive <- flowmapblue(
   locations = locations_seville,
   flows = flows_seville_time,
