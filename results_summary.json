@@ -1,0 +1,19 @@
+{
+  "matched_pairs": 289,
+  "pearson_r": 0.1007,
+  "pearson_p": 0.0874,
+  "r_squared": 0.0101,
+  "spearman_rho": 0.1444,
+  "spearman_p": 0.014,
+  "ols_slope": 3.551,
+  "ols_intercept": 1752.6431,
+  "rmse": 3550.3,
+  "nrmse": 1.7579,
+  "mean_observed": 2019.6,
+  "mean_modelled": 75.2,
+  "total_observed": 583678.0,
+  "total_modelled": 21730.0,
+  "analysis_time_s": 0.02,
+  "zones_mapped": 17,
+  "total_zones": 21
+}
