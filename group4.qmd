@@ -1,40 +1,86 @@
 ---
-title: "Group 4 presentation"
-format:
-  revealjs:
-    theme: league
-    slide-number: true
-    show-slide-number: all
-    hash-type: number
-    preview-links: auto
+title: "How Is Human Mobility Driven By Amenities? A Pamplona Case Study"
+subtitle: "Mobile Tartu: PhD School Workshop Presentation"
+date: "09 June 2024"
+author:
+  - Zijun Ding
+  - Thomas Dimos
+  - Laura Altin
+  - Emiliano Beltran
+title-slide-attributes:
+  data-background-image: Mobile-Tartu-Wallpaper-Image-For-Quarto-Presentation.png
+  data-background-size: "45%"
+  data-background-opacity: "0.5"
+  data-background-position: bottom
+format: revealjs
+toc: true
+toc-location: right
+grid:
+  margin-width: 350px
+theme: simple
+execute:
+  eval: false
+  echo: false
 ---
 
-## Team Members
+## Research Question
 
-- **Thomas Dimos** - *Role / Interest*
-- **Member 2** - *Role / Interest*
-- **Member 3** - *Role / Interest*
-- **Member 4** - *Role / Interest*
+```{=html}
+<style>
+   .reveal .title {
+    font-size: 1.5em !important;
+  }
+  .quarto-title-author-name {
+    font-size: 0.6em;
+  }
+  .date {
+    font-size: 0.5em;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 0.9em; /* Increase or decrease this number to adjust size */
+  }
+</style>
+```
 
-## Research Interests
+::: {style="text-align: center; font-size: 1.2em;"}
+Could we infer if the mobility of people is driven by the availability of amenities in a given area?
+:::
 
-What are the key themes or datasets your team is interested in exploring?
+## Scope Of Analysis (1/2)
 
-- Spatio-temporal mobility patterns
-- Public transport accessibility
-- Active travel and routing network models
+![](Pamplona-Within-Northern-Area-Region-Map.png){width="650" fig-align="center"}
 
-## Selected Project Idea
+## Scope Of Analysis (2/2)
 
-Briefly describe your chosen project or case study:
+![](Overall-Map-Layout-Of-Pamplona-Districts.png){width="400" fig-align="center"}
 
-- **What?** (e.g. Spain-France cross-border flow decay)
-- **Why?** (e.g. barrier effect of international boundaries)
-- **How?** (e.g. routing with dodgr and mapping with mapgl)
+## Interactive OD Flows (1/2)
 
-## Expected Outputs
+[Pamplona's OD Flows (Wednesday, February 9th, 2022)](https://www.flowmap.blue/1s0fymrh8YdN2PMtfyWcCi-I_0v74KIBK5TTKGMHC4H4?v=42.813682%2C-1.647666%2C12.28%2C0%2C0&a=0&as=1&b=1&bo=75&c=1&ca=1&d=1&fe=1&lt=1&lfm=ALL&t=20220209T220000%2C20220210T000000&f=50)
 
-What figures, maps, or statistics do you plan to generate?
+![](Flowmap-Blue-Of-Pamplona-OD-Flows.png){fig-align="center"}
 
-- Symmetrical flow maps
-- Correlation analysis plots
+## Interactive OD Flows (2/2)
+
+::: {.r-stretch}
+<iframe 
+  src="https://www.flowmap.blue/1s0fymrh8YdN2PMtfyWcCi-I_0v74KIBK5TTKGMHC4H4/embed"
+  width="100%" 
+  height="100%"
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+:::
+
+## Destinations & Amenities
+
+::: {layout-ncol="2"}
+![](Destination-Counts-Per-Pamplona-Districts-Map.png){width="400" fig-align="center"}
+
+![](Amenities-Counts-Per-Pamplona-Districts-Map.png){width="400" fig-align="center"}
+:::
+
+## Pearson Correlation Test
+
+![](Correlation-Test-Between-Destination-&-Amenities.png){fig-align="center"}
