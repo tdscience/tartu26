@@ -31,7 +31,8 @@ We all just tried out different things, but this are some questions we tried to 
 
 - What trip purposes dominate for cross-border trips between Spain and France?
 - How does a public transport strike effect bikesharing usage?
-- How easy is it to get a routable cacling network from OpenStreetMap?
+- How easy is it to get a routable cycling network from OpenStreetMap?
+- How can we improve the performance of the existing grid-based OD flows workbook?
 
 ## Trip purposes for cross-border trips between Spain and France
 
@@ -63,3 +64,36 @@ Aggregated origin-destination flows of bikesharing trips in Dresden on 3 March (
 This network took less than one hour to get with no previous knowledge of the [osmextract](https://docs.ropensci.org/osmextract/articles/osmextract.html) package. And it looks quite reasonable, even though goo routing is another question.
 
 ![Map of cyclable links in Dresden](images/grp3-cycling-network-dresden.png)
+
+## OD-to-flows pipeline
+
+- Grid-based OD estimation in Pamplona (`grid2demand`)
+- Demand dictated by POIs
+- Validation results:
+  - Pearson correlation: 0.1
+  - Spearman correlation: 0.14
+
+## Improving the pipeline
+
+- Experimenting with different parameters (e.g. scaling factor, number of flows included)
+- Adding different POIs
+- ~~Increasing the grid resolution~~
+- **Decreasing the grid resolution** - 9x5
+
+![Grid centroids (red) vs validation zones (blue)](images/grp3_validation_loc.png)
+
+## Estimated flows
+
+![Estimated OD-flows](images/grp3_estimated_flows.png)
+
+## Routed flows
+
+![Routed OD-flows](images/grp3_routed_flows.png)
+
+## Validation results
+
+- Pearson correlation: 0.1 → **0.11**
+- Spearman correlation: 0.14 → **0.39**
+
+- Spearman correlation is improving, suggesting that the ranking of flows is more accurate
+- Further improvements: adjusting the scaling factor, aligning the grid with the validation zones, adding more POIs, etc.
