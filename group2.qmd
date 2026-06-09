@@ -43,6 +43,19 @@ flowchart LR
 ```
 :::
 
+
+## Expected Outputs I
+
+OD Flow map containing Catalonia real data
+
+![](imgs/group2/1.png){fig-align="center"}
+
+## Expected Outputs II
+
+Separation about french and spanish regions focused in Catalonia
+
+![](imgs/group2/2.png){fig-align="center"}
+
 ## Expected Outputs III
 
 Elevation map contaning data of Pyrenees
