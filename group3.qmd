@@ -7,14 +7,6 @@ format:
     show-slide-number: all
     hash-type: number
     preview-links: auto
-    include-in-header: : |
-      <style>
-      body,
-      .reveal,
-      .reveal section {
-        font-size: 0.8rem
-      }
-      </style>
 ---
 
 ## Team Members
