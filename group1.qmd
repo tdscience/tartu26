@@ -1,5 +1,5 @@
 ---
-title: "Group 1 presentation Test Edit"
+title: "Group 1 - Leisure and Commuting Mobility Patterns in the Spain-France Border Region"
 format:
   revealjs:
     theme: league
@@ -11,30 +11,63 @@ format:
 
 ## Team Members
 
-- **Member 1** - *Role / Interest*
-- **Member 2** - *Role / Interest*
-- **Member 3** - *Role / Interest*
-- **Member 4** - *Role / Interest*
+- **Eva Hajčiarová** - *PhD student / Applying routing analysis to local context*
+- **Paul Bairoh** - *PhD student / Quarto "expert" and GIS specialist*
+- **Allison Fernández-Lobo** - *PhD student / Intermodality and cross-border mobility*
+- **Juliette Le Corguillé** - *PhD student / Accessibility and public transportation*
 
-## Research Interests
+## Research interests - Cross-border trips in North-Eastern Spain to Southern France
 
-What are the key themes or datasets your team is interested in exploring?
+- Cross-border trips
+  - Who travels and when?
+- How does the France-Spain border affect mobility patterns in the Basque Country?
+  - What are the barriers and opportunities for cross-border mobility in this region?
 
-- Spatio-temporal mobility patterns
-- Public transport accessibility
-- Active travel and routing network models
+## Border as a potential barrier for the inhabitants of the Basque Country?
 
-## Selected Project Idea
+![](images/basque_country.jpg){fig-align="center"}
 
-Briefly describe your chosen project or case study:
+Amado, A., Paül, V., & Trillo-Santamaría, J. M. (2024).
 
-- **What?** (e.g. Spain-France cross-border flow decay)
-- **Why?** (e.g. barrier effect of international boundaries)
-- **How?** (e.g. routing with dodgr and mapping with mapgl)
+## What affects cross-border mobility?
 
-## Expected Outputs
+![](images/Cross-border_demographics.jpg){fig-align="center"}
 
-What figures, maps, or statistics do you plan to generate?
+Guereño-Omil, B., Hannam, K., & Alzua-Sorzabal, A. (2014).
 
-- Symmetrical flow maps
-- Correlation analysis plots
+## Study Area: TENT Network in Spain
+
+![](images/Spain_TENT.png){fig-align="center"}
+
+## Research Questions
+
+- What are the cross-border mobility patterns in this region?
+  - What are the peak commuting hours during weekdays and typical leisure travel hours on the weekend?
+- What kind of differences are there in the demographics of those doing cross-border commuting and those doing cross-border leisure trips?
+  - Comparing patterns by income, gender, age (control variables)
+
+## Planned methodology (1)
+1. Dataset 
+![](images/OD_data_example_Juliette.png){fig-align="center"}
+
+
+## Planned methodology (2)
+2. Data analysis
+- Compare socioeconomic characteristics of the people doing cross-border trips vs those doing domestic trips
+
+3. Routing analysis
+- Connect local data (traffic survey measurement points) from Prague Strahov area to the map layer, perform simple routing analysis on the local data and visualise the results. 
+
+
+## Routing results
+![](images/Eva_1.png){fig-align="center"}
+
+## Routing results
+
+![](images/Eva_2.png){fig-align="center"}
+
+## References
+
+- Amado, A., Paül, V., & Trillo-Santamaría, J. M. (2024). The cross-border dimension of regional and urban planning in the greater Basque country (Spain-France). Estudios fronterizos, 25.
+
+- Guereño-Omil, B., Hannam, K., & Alzua-Sorzabal, A. (2014). Cross-border leisure mobility styles in the Basque Eurocity. Leisure Studies, 33(6), 547–564. https://doi.org/10.1080/02614367.2013.833282
