@@ -62,7 +62,7 @@ Aggregated origin-destination flows of bikesharing trips in Dresden on 2 March (
 
 ## Influence of a public transport strike on bikesharing
 
-Aggregated origin-destination flows of bikesharing trips in Dresden on 3 March (Friday, 24 h public transport strike except heavy rail) 
+Aggregated origin-destination flows of bikesharing trips in Dresden on 3 March (Friday, 24 h public transport strike) 
 
 ![](images/grp3-bikesharing-pt-strike.png)
 
@@ -71,3 +71,11 @@ Aggregated origin-destination flows of bikesharing trips in Dresden on 3 March (
 This network took less than one hour to get with no previous knowledge of the [osmextract](https://docs.ropensci.org/osmextract/articles/osmextract.html) package. And it looks quite reasonable, even though goo routing is another question.
 
 ![](images/grp3-cycling-network-dresden.png)
+
+## Pamplona network
+
+This used the Python package `grid2demand` 
+
+![](images/grp3_routed_flows.png)
+
+# Gravity model
