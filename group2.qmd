@@ -48,13 +48,13 @@ flowchart LR
 
 OD Flow map containing Catalonia real data
 
-![](imgs/group2/1.png){fig-align="center"}
+![](images/group2-1.png){fig-align="center"}
 
 ## Expected Outputs II
 
 Separation about french and spanish regions focused in Catalonia
 
-![](imgs/group2/2.png){fig-align="center"}
+![](images/group2-2.png){fig-align="center"}
 
 ## Expected Outputs III
 
