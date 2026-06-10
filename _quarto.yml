@@ -31,6 +31,8 @@ website:
         text: Python Demand Matrix
       - href: walking-networks.qmd
         text: Walking Networks
+      - href: README.qmd
+        text: Research Paper
       - href: slides.qmd
         text: Slides
       - section: "Group Presentations"
